@@ -15,7 +15,24 @@
     </header>
     <main id="main">
       <div class="photograph-header">
+        <div class="photograph__meta">
+          <!-- META DATA -->
+        </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div class="photograph__portrait">
+          <!-- META DATA : Portrait -->
+        </div>
+      </div>
+      <div class="photograph__sort">
+        <span class="sort__label"> Trier par </span>
+        <select id="sort-photograph-media"> 
+          <option value="popularity"> Popularité </option>
+          <option value="date"> Date </option>
+          <option value="title"> Titre </option>
+        </select>
+      </div>
+      <div class="photograph__media">
+        <!-- MEDIA DATA -->
       </div>
     </main>
     <div id="contact_modal">
