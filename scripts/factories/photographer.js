@@ -6,14 +6,13 @@ async function getData () {
 
 function photographerFactory(data) {
 
-    const { name, portrait, id } = data
+    const { name, portrait } = data
 
-    const picture = `assets/photographers/${data.portrait}`
+    const picture = `assets/photographers/${portrait}`
     const urlPhotographer = `photographer.html?id=${data.id}`
     const locationTextContent = `${data.city}, ${data.country}`
     const taglineTextContent = data.tagline
     const priceTextContent = `${data.price}€/jour`
-
 
     function getUserCardDOM() {
 
@@ -27,6 +26,8 @@ function photographerFactory(data) {
 
         a.setAttribute('href', urlPhotographer)
         img.setAttribute("src", picture)
+        img.setAttribute('alt', name)
+
         h2.textContent = data.name
         location.textContent = locationTextContent
         tagline.textContent = taglineTextContent
@@ -73,5 +74,31 @@ function photographerFactory(data) {
         return img
     }
 
-    return { name, picture, id, getUserCardDOM, getUserCardMetaDOM, getUserPortraitDOM }
+    return { name, picture, getUserCardDOM, getUserCardMetaDOM, getUserPortraitDOM }
+}
+
+function photographerMediasFactory () {
+
+    function getMediaCardDOM (mediaData) {
+
+        const { id, title, image, likes } = mediaData
+
+        const picture = `assets/media/${image}`
+
+        const article = document.createElement('article')
+
+        const titleParagraph = document.createElement('p')
+        const img = document.createElement('img')
+
+        titleParagraph.textContent = title
+        img.setAttribute('src', picture)
+        img.setAttribute('alt', title)
+
+        article.appendChild(titleParagraph)
+        article.appendChild(img)
+
+        return article
+    }
+
+    return { getMediaCardDOM }
 }
