@@ -6,7 +6,7 @@ async function getData () {
 
 async function getPhotographers() {
 
-    const data = await getData()    
+    const data = await getData()
     return { photographers: data.photographers }
 
 }
@@ -27,7 +27,7 @@ async function init() {
 
     const { photographers } = await getPhotographers()
     displayData(photographers)
-    
+
 }
 
 init()
