@@ -1,17 +1,54 @@
 #lightbox {
     display: none;
-    border: 1px solid red;
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
+    background-color: white;
+    padding: 1em 0;
 }
 
 #lightbox .close-btn {
-    font-size: 50px;
+    font-size: 2em;
+    font-weight: bold;
     color: var(--brown);
     background-color: transparent;
     border: none;
     cursor: pointer;
+    position: absolute;
+    right: 0%;
+    top: 2%;
+}
+
+.lightbox__content {
+    height: 90%;
+    width: 60%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1em;
+}
+
+.fa-chevron-left, .fa-chevron-right {
+    font-size: 2.5em;
+}
+
+
+.lightbox__image {
+    background-color: red;
+    height: 100%;
+    width: 50%;
+}
+
+.lightbox__title {
+    height: 10%;
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--brown);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
