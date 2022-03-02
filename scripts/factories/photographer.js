@@ -10,39 +10,39 @@ function photographerFactory(data) {
 
     const picture = `assets/photographers/${portrait}`
     const urlPhotographer = `photographer.html?id=${data.id}`
-    const locationTextContent = `${data.city}, ${data.country}`
-    const taglineTextContent = data.tagline
-    const priceTextContent = `${data.price}€/jour`
+    const location = `${data.city}, ${data.country}`
+    const tagline = data.tagline
+    const price = `${data.price}€/jour`
 
     function getUserCardDOM() {
 
-        const article = document.createElement('article')
-        const a = document.createElement('a')
-        const img = document.createElement('img')
-        const h2 = document.createElement('h2')
-        const location = document.createElement('div')
-        const tagline = document.createElement('div')
-        const price = document.createElement('div')
+        const articleElement = document.createElement('article')
+        const aElement = document.createElement('a')
+        const imgElement = document.createElement('img')
+        const h2Element = document.createElement('h2')
+        const locationElement = document.createElement('div')
+        const taglineElement = document.createElement('div')
+        const priceElement = document.createElement('div')
 
-        a.setAttribute('href', urlPhotographer)
-        img.setAttribute("src", picture)
-        img.setAttribute('alt', name)
+        aElement.setAttribute('href', urlPhotographer)
+        imgElement.setAttribute("src", picture)
+        imgElement.setAttribute('alt', name)
 
-        h2.textContent = data.name
-        location.textContent = locationTextContent
-        tagline.textContent = taglineTextContent
-        price.textContent = priceTextContent
+        h2Element.textContent = data.name
+        locationElement.textContent = location
+        taglineElement.textContent = tagline
+        priceElement.textContent = price
 
-        location.classList.add('location')
-        tagline.classList.add('tagline')
-        price.classList.add('price')
+        locationElement.classList.add('location')
+        taglineElement.classList.add('tagline')
+        priceElement.classList.add('price')
 
-        article.appendChild(a)
-        a.appendChild(img)
-        a.appendChild(h2)
-        a.appendChild(location)
-        a.appendChild(tagline)
-        a.appendChild(price)
+        articleElement.appendChild(aElement)
+        aElement.appendChild(imgElement)
+        aElement.appendChild(h2Element)
+        aElement.appendChild(locationElement)
+        aElement.appendChild(taglineElement)
+        aElement.appendChild(priceElement)
 
         return article
 
@@ -50,28 +50,28 @@ function photographerFactory(data) {
 
     function getUserCardMetaDOM () {
 
-        const article = document.createElement('article')
-        const h1 = document.createElement('h1')
-        const location = document.createElement('p')
-        const tagline = document.createElement('p')
+        const articleElement = document.createElement('article')
+        const h1Element = document.createElement('h1')
+        const locationElement = document.createElement('p')
+        const taglineElement = document.createElement('p')
     
-        h1.textContent = name
-        location.textContent = locationTextContent
-        tagline.textContent = taglineTextContent
+        h1Element.textContent = name
+        locationElement.textContent = location
+        taglineElement.textContent = tagline
     
-        article.appendChild(h1)
-        article.appendChild(location)
-        article.appendChild(tagline)
+        articleElement.appendChild(h1Element)
+        articleElement.appendChild(locationElement)
+        articleElement.appendChild(taglineElement)
 
-        return article
+        return articleElement
 
     }
 
     function getUserPortraitDOM () {
-        const img = document.createElement('img')
-        img.setAttribute("src", picture)
+        const imgElement = document.createElement('img')
+        imgElement.setAttribute("src", picture)
 
-        return img
+        return imgElement
     }
 
     return { name, picture, getUserCardDOM, getUserCardMetaDOM, getUserPortraitDOM }
@@ -85,19 +85,21 @@ function photographerMediasFactory () {
 
         const picture = `assets/media/${image}`
 
-        const article = document.createElement('article')
+        const articleElement = document.createElement('article')
+        const titleElement = document.createElement('p')
+        const imgElement = document.createElement('img')
+        const likesElement = document.createElement('span')
 
-        const titleParagraph = document.createElement('p')
-        const img = document.createElement('img')
+        titleElement.textContent = title
+        imgElement.setAttribute('src', picture)
+        imgElement.setAttribute('alt', title)
+        likesElement.textContent = likes
 
-        titleParagraph.textContent = title
-        img.setAttribute('src', picture)
-        img.setAttribute('alt', title)
+        articleElement.appendChild(titleElement)
+        articleElement.appendChild(imgElement)
+        articleElement.appendChild(likesElement)
 
-        article.appendChild(titleParagraph)
-        article.appendChild(img)
-
-        return article
+        return articleElement
     }
 
     return { getMediaCardDOM }
