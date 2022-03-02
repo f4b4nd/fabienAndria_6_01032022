@@ -16,11 +16,11 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <div class="photograph__meta">
+        <div class="photograph__meta__text">
           <!-- META DATA -->
         </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-        <div class="photograph__portrait">
+        <div class="photograph__meta__portrait">
           <!-- META DATA : Portrait -->
         </div>
       </div>
@@ -40,6 +40,9 @@
 
       </div> <!-- .photograph__media -->
     </main>
+    <div id="lightbox">
+      <button class="close-btn" onclick="closeLightbox()"> X </button>
+    </div>
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -55,6 +58,7 @@
 				</form>
 			</div>
 		</div>
+    <script src="/scripts/utils/lightbox.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>

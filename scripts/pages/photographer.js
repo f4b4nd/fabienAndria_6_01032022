@@ -19,8 +19,8 @@ async function getPhotographerData () {
 
 async function displayMetaData (metaData) {
 
-    const metaSection = document.querySelector(".photograph__meta")
-    const portraitSection = document.querySelector('.photograph__portrait')
+    const metaSection = document.querySelector(".photograph__meta__text")
+    const portraitSection = document.querySelector('.photograph__meta__portrait')
 
     const photographerModel = photographerFactory(metaData)
     const userCardMetaDOM = photographerModel.getUserCardMetaDOM()

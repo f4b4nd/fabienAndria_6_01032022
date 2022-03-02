@@ -104,6 +104,8 @@ function photographerMediasFactory () {
         likesCounterElement.classList.add('likes-counter')
         likesIconElement.classList.add('fa-solid', 'fa-heart')
 
+        articleElement.onclick = function () { displayLightbox() }
+
         articleElement.appendChild(imageContainerElement)
         articleElement.appendChild(bodyContainerElement)
 

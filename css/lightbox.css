@@ -1,0 +1,17 @@
+#lightbox {
+    display: none;
+    border: 1px solid red;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#lightbox .close-btn {
+    font-size: 50px;
+    color: var(--brown);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
