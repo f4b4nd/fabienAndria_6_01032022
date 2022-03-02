@@ -19,15 +19,15 @@ async function getPhotographerData () {
 
 async function displayMetaData (metaData) {
 
-    const metaSection = document.querySelector(".photograph__meta__text")
-    const portraitSection = document.querySelector('.photograph__meta__portrait')
+    const metaTextSection = document.querySelector(".photograph__meta__text")
+    const metaPortraitSection = document.querySelector('.photograph__meta__portrait')
 
     const photographerModel = photographerFactory(metaData)
     const userCardMetaDOM = photographerModel.getUserCardMetaDOM()
     const userPortraitDOM = photographerModel.getUserPortraitDOM()
 
-    metaSection.appendChild(userCardMetaDOM)
-    portraitSection.appendChild(userPortraitDOM)
+    metaTextSection.appendChild(userCardMetaDOM)
+    metaPortraitSection.appendChild(userPortraitDOM)
 
 }
 
@@ -43,6 +43,41 @@ async function displayMediaDatas (mediaDatas) {
 
 }
 
+function compareStringDates(a, b) {
+    return new Date(b) - new Date(a)
+}
+
+async function orderMediaDatas(value) {
+
+    clearMediaData ()
+
+    const { mediaDatas } = await getPhotographerData()
+
+    switch (value) {
+        case 'popularity':
+            mediaDatas.sort((a, b) => b.likes - a.likes)
+            break
+
+        case 'date':
+            mediaDatas.sort((a, b) => compareStringDates(a.date, b.date))
+            break
+            
+        case 'title':
+            mediaDatas.sort((a, b) => a.title.localeCompare(b.title))
+            break
+    }
+    
+    displayMediaDatas(mediaDatas)
+
+}
+
+function clearMediaData () {
+    const mediaSection = document.querySelector(".photograph__media .cards")
+    while (mediaSection.firstChild) {
+        mediaSection.removeChild(mediaSection.lastChild)
+    }
+}
+
 async function init () {
     const { metaData, mediaDatas } = await getPhotographerData()
     displayMetaData(metaData)
@@ -50,6 +85,5 @@ async function init () {
     console.log('meta', metaData)
     console.log('media', mediaDatas)
 }
-
 
 init()

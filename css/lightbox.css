@@ -17,13 +17,14 @@
     border: none;
     cursor: pointer;
     position: absolute;
-    right: 0%;
+    right: 1%;
     top: 2%;
 }
 
 .lightbox__content {
     height: 90%;
-    width: 60%;
+    width: 80vw;
+    max-width: 1000px;
     margin: 0 auto;
     position: relative;
     display: flex;
@@ -34,13 +35,17 @@
 
 .fa-chevron-left, .fa-chevron-right {
     font-size: 2.5em;
+    color: var(--brown);
+    cursor: pointer;
 }
 
 
 .lightbox__image {
     background-color: red;
     height: 100%;
-    width: 50%;
+    width: 50vw;
+    min-width: 300px;
+    max-width: 800px;
 }
 
 .lightbox__title {

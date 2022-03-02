@@ -1,9 +1,12 @@
 .photograph__media .cards article {
-    flex-basis: 28%;
+    flex-basis: 28%;    
     height: 20vw;
+    min-width: 250px;
+    min-height: 250px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    cursor: pointer;
 }
 
 .photograph__media article .article__image {
@@ -19,6 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 1.1em;
 }
 
 .photograph__media article .article__body > * {
@@ -27,7 +31,7 @@
 } 
 
 .likes-counter {
-    margin: 0 0.5em; 
+   margin-right: 0.5em; 
 }
 
 .fa-heart {
