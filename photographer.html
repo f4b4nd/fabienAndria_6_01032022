@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -23,17 +24,21 @@
           <!-- META DATA : Portrait -->
         </div>
       </div>
-      <div class="photograph__sort">
-        <span class="sort__label"> Trier par </span>
-        <select id="sort-photograph-media"> 
-          <option value="popularity"> Popularité </option>
-          <option value="date"> Date </option>
-          <option value="title"> Titre </option>
-        </select>
-      </div>
+
       <div class="photograph__media">
-        <!-- MEDIA DATA -->
-      </div>
+
+        <div class="photograph__orderby">
+          <span class="orderby__label"> Trier par </span>
+          <select id="orderby-options"> 
+            <option value="popularity"> Popularité </option>
+            <option value="date"> Date </option>
+            <option value="title"> Titre </option>
+          </select>
+        </div>
+
+        <div class="cards">  <!-- MEDIA DATA --> </div>
+
+      </div> <!-- .photograph__media -->
     </main>
     <div id="contact_modal">
 			<div class="modal">

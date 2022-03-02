@@ -32,7 +32,7 @@ async function displayMetaData (metaData) {
 }
 
 async function displayMediaDatas (mediaDatas) {
-    const mediaSection = document.querySelector(".photograph__media")
+    const mediaSection = document.querySelector(".photograph__media .cards")
 
     const photographerModel = photographerMediasFactory()
 
