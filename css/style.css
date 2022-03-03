@@ -25,20 +25,21 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    column-gap: 0.5em;
     height: 90px;
     margin-top: 2em;
-    padding: 0 3em;
+    padding: 0 2em;
 }
 
 h1 {
     color: var(--brown);
     font-size: 1.5em;
-    text-align: right;
+    text-align: center;
 }
 
 
 .logo {
-    height: 3em;
+    height: 2.5em;
 }
 
 .photographer_section article img, 
