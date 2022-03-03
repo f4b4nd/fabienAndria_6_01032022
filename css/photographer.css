@@ -45,3 +45,33 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+ul#dropdown-orderby {
+    background-color: var(--brown);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0 1em;
+    min-height: 50px;
+    width: 150px;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+#dropdown-orderby.active li {
+    display: block;
+}
+
+#dropdown-orderby li {
+    display: none;
+    border-radius: 20px;
+    margin: 0;
+    height: 50px;
+    cursor: pointer;
+}
+
+#dropdown-orderby li.active {
+    display: block;
+}

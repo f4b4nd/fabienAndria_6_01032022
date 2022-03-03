@@ -32,11 +32,11 @@
 
         <div class="photograph__orderby">
           <span class="orderby__label"> Trier par </span>
-          <select onchange="orderMediaDatas(this.options[this.selectedIndex].value)" id="orderby-options"> 
-            <option value="popularity"> Popularité </option>
-            <option value="date"> Date </option>
-            <option value="title"> Titre </option>
-          </select>
+          <ul id="dropdown-orderby"> 
+            <li id="popularity"> Popularité </li>
+            <li id="date"> Date </li>
+            <li id="title"> Titre </li>
+          </ul>
         </div>
 
         <div class="cards">  <!-- MEDIA DATA --> </div>
