@@ -3,8 +3,6 @@
     flex-basis: 28%;
     min-width: 300px;
     min-height: 300px;
-
-    justify-self: center;
     
     display: flex;
     flex-direction: column;

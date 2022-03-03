@@ -26,16 +26,19 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    margin-top: 2em;
+    padding: 0 3em;
 }
 
 h1 {
     color: var(--brown);
-    margin-right: 100px;
+    font-size: 1.5em;
+    text-align: right;
 }
 
+
 .logo {
-    height: 50px;
-    margin-left: 100px;
+    height: 3em;
 }
 
 .photographer_section article img, 
