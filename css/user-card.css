@@ -1,0 +1,67 @@
+.photographer_section article {
+    height: 20vw;
+    flex-basis: 28%;
+    min-width: 300px;
+    min-height: 300px;
+
+    justify-self: center;
+    
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.photographer_section a {
+    height: 75%;
+    text-decoration : none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photographer_section article .article__image {
+    height: 85%;
+    width: 45%;
+    min-height: 200px;
+    min-width: 200px;
+    border-radius : 50%;
+    overflow: hidden;
+}
+
+.photographer_section article h2 {
+    color: var(--indian-red);
+    font-size: 1.5em;
+    margin: 0;
+}
+
+
+/************/
+
+
+.photographer_section article .article__body {
+    height: 25%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.photographer_section article .location {
+    color: var(--indian-red);
+    font-size: 1.1em;
+}
+
+.photographer_section article .tagline {
+    font-size: 0.9em;
+}
+
+.photographer_section article .price {
+    font-size: 0.9em;
+    color: var(--grey);
+}
+
+
+

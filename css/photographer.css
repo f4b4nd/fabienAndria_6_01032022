@@ -17,11 +17,6 @@
     overflow: hidden;
 }
 
-.photograph__meta__portrait img, .photograph__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 .photograph__media {
     margin: 0 100px;

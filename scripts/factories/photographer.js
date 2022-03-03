@@ -18,6 +18,9 @@ function photographerFactory(data) {
 
         const articleElement = document.createElement('article')
         const aElement = document.createElement('a')
+        const imageContainerElement = document.createElement('div')
+        const bodyContainerElement = document.createElement('div')
+
         const imgElement = document.createElement('img')
         const h2Element = document.createElement('h2')
         const locationElement = document.createElement('div')
@@ -31,18 +34,24 @@ function photographerFactory(data) {
         h2Element.textContent = data.name
         locationElement.textContent = location
         taglineElement.textContent = tagline
-        priceElement.textContent = price
-
+        priceElement.textContent = price        
+        
+        imageContainerElement.classList.add('article__image')
+        bodyContainerElement.classList.add('article__body')
         locationElement.classList.add('location')
         taglineElement.classList.add('tagline')
         priceElement.classList.add('price')
 
         articleElement.appendChild(aElement)
-        aElement.appendChild(imgElement)
+        articleElement.appendChild(bodyContainerElement)
+
+        aElement.appendChild(imageContainerElement)
         aElement.appendChild(h2Element)
-        aElement.appendChild(locationElement)
-        aElement.appendChild(taglineElement)
-        aElement.appendChild(priceElement)
+
+        imageContainerElement.appendChild(imgElement)
+        bodyContainerElement.appendChild(locationElement)
+        bodyContainerElement.appendChild(taglineElement)
+        bodyContainerElement.appendChild(priceElement)
 
         return articleElement
 
