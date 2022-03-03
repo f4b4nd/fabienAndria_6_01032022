@@ -58,10 +58,17 @@
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
+        <h3 class="modal__photograph-name"> Mimi </h3>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label form="firstname">Prénom</label>
+						<input id="firstname" />
+            <label for="lastname" >Nom</label>
+						<input id="lastname" />
+            <label form="email" >Email</label>
+						<input id="email" />
+            <label for="message" >Votre message</label>
+						<input id="message" />
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>

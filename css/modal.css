@@ -6,13 +6,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 1em 2em 2em 2em;
     margin: auto;
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    margin-top: 0;
 }
 
 .modal header img {
@@ -20,7 +21,7 @@
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 2.5em;
     font-weight: normal;
     text-align: center;
 }
@@ -34,7 +35,7 @@ form {
 
 form label {
     color: var(--dark-grey);
-    font-size: 36px;
+    font-size: 1.5em;
 }
 
 form div {
@@ -45,18 +46,31 @@ form div {
     margin-bottom: 26px;
 }
 
+.modal h3 {
+    display: block;
+    text-align: left;
+    width: 100%;
+    font-size: 1.8em;
+    margin: 0 0 1em 0;
+}
+
 form input {
     width: 100%;
-    height: 68px;
+    height: 50px;
     border: none;
     border-radius: 5px;
+    margin-bottom: 1.5em;
+}
+
+form input#message {
+    height: 100px;
 }
 
 #contact_modal {
     display: none;
     position: fixed;
-    top: 10%;
+    top: 5%;
     right: 10%;
     left: 10%;
-    bottom: 10%;
+    bottom: 20%;
 }
