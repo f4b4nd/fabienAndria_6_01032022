@@ -4,6 +4,7 @@
 @import url("media-card.css");
 @import url("modal.css");
 @import url("lightbox.css");
+@import url("dropdown.css");
 
 :root {
     --ghost-white: #FAFAFA;

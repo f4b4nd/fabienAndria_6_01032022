@@ -25,12 +25,23 @@
 .photograph__media .photograph__orderby {
     margin : 2em 0;
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    border: 1px solid black;
 }
+
 .photograph__media .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     row-gap: 2em;
+}
+
+/**prevents article:last-child to stick to right because of space-between */
+.photograph__media .cards::after {
+    content: "";
+    flex: 0 0 28%;
 }
 
 .contact_button {
@@ -47,31 +58,6 @@
 }
 
 
-ul#dropdown-orderby {
-    background-color: var(--brown);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 0 1em;
-    min-height: 50px;
-    width: 150px;
-    font-weight: bold;
-    font-size: 1.1em;
-    cursor: pointer;
-}
-
-#dropdown-orderby.active li {
-    display: block;
-}
-
-#dropdown-orderby li {
-    display: none;
-    border-radius: 20px;
-    margin: 0;
-    height: 50px;
-    cursor: pointer;
-}
-
-#dropdown-orderby li.active {
-    display: block;
+.photograph__orderby {
+    position: relative;
 }
