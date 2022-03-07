@@ -94,6 +94,7 @@ function photographerFactory(data) {
         return imgElement
     }
 
+
     return { name, picture, getUserCardDOM, getUserCardMetaDOM, getUserPortraitDOM }
 }
 
@@ -101,7 +102,7 @@ function photographerMediasFactory () {
 
     function getImageMediaCardDOM (mediaData) {
 
-        const { id, title, image, video, likes } = mediaData
+        const { id, title, image, likes } = mediaData
 
         const picture = `assets/media/${image}`
 
@@ -179,5 +180,38 @@ function photographerMediasFactory () {
         return articleElement
     }
 
+
     return { getImageMediaCardDOM, getVideoMediaCardDOM }
+
+}
+
+function photographerPopupFactory () {
+
+    function getLikeInfoPopup (price, totalLikes) {
+
+        const popupElement = document.createElement('div')
+        const likesElement = document.createElement('span')
+        const likesCounterElement = document.createElement('span')
+        const likesIconElement = document.createElement('span')
+        const priceElement = document.createElement('span')
+
+        popupElement.classList.add('popup')
+        likesElement.classList.add('wrapper-likes')
+        likesCounterElement.classList.add('likes-counter')
+        likesIconElement.classList.add('fa-solid', 'fa-heart')
+        priceElement.classList.add('wrapper-price')
+
+        popupElement.appendChild(likesElement)
+        likesElement.appendChild(likesCounterElement)
+        likesElement.appendChild(likesIconElement)
+        popupElement.appendChild(priceElement)
+
+        likesCounterElement.textContent = totalLikes
+        priceElement.textContent = `${price}€ / jour`
+
+        return popupElement
+    }
+
+    return { getLikeInfoPopup }
+
 }

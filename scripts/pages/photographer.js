@@ -84,6 +84,21 @@ async function displayMediaDatas (mediaDatas) {
 
 }
 
+async function displayUserPopup (metaData, mediaDatas) {
+
+    const section = document.querySelector(".photograph__popup")
+    const totalLikes = Object.values(mediaDatas).reduce((acc, current) => acc + current.likes, 0)
+    console.log('total', totalLikes)
+
+    const price = metaData.price
+
+    const model = photographerPopupFactory()
+
+    const popupDOM = model.getLikeInfoPopup(price, totalLikes)
+    section.appendChild(popupDOM)
+
+}
+
 function compareStringDates(a, b) {
     return new Date(b) - new Date(a)
 }
@@ -123,6 +138,7 @@ async function init () {
     const { metaData, mediaDatas } = await getPhotographerData()
     displayMetaData(metaData)
     displayMediaDatas(mediaDatas)
+    displayUserPopup (metaData, mediaDatas)
     console.log('meta', metaData)
     console.log('media', mediaDatas)
 }
