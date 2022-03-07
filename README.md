@@ -1,6 +1,7 @@
-# Base de code du projet P6 - Parcours Front-end
+# Projet 6 : Créez un site accessible pour une plateforme de photographes
 
-## Démarrer le projet
+## Lien du site 
+Le projet est mis en ligne à l'URL suivante : 
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
 
+https://f4b4nd.github.io/fabienAndria_6_01032022/
