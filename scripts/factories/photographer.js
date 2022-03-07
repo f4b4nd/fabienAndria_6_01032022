@@ -99,9 +99,9 @@ function photographerFactory(data) {
 
 function photographerMediasFactory () {
 
-    function getMediaCardDOM (mediaData) {
+    function getImageMediaCardDOM (mediaData) {
 
-        const { id, title, image, likes } = mediaData
+        const { id, title, image, video, likes } = mediaData
 
         const picture = `assets/media/${image}`
 
@@ -139,5 +139,45 @@ function photographerMediasFactory () {
         return articleElement
     }
 
-    return { getMediaCardDOM }
+    function getVideoMediaCardDOM (mediaData) {
+
+        const { id, title, video, likes } = mediaData
+
+        const media = `assets/media/${video}`
+
+        const articleElement = document.createElement('article')
+        const titleElement = document.createElement('p')
+        const mediaContainerElement = document.createElement('div')
+        const bodyContainerElement = document.createElement('div')
+        const mediaElement = document.createElement('video')
+        const likesElement = document.createElement('span')
+        const likesCounterElement = document.createElement('span')
+        const likesIconElement = document.createElement('span')
+
+        titleElement.textContent = title
+        mediaElement.setAttribute('src', media)
+        mediaElement.setAttribute('controls', 'controls')
+        likesCounterElement.textContent = likes
+
+        bodyContainerElement.classList.add('article__body')
+        mediaContainerElement.classList.add('article__video')
+        likesCounterElement.classList.add('likes-counter')
+        likesIconElement.classList.add('fa-solid', 'fa-heart')
+
+        articleElement.onclick = function () { displayLightbox() }
+
+        articleElement.appendChild(mediaContainerElement)
+        articleElement.appendChild(bodyContainerElement)
+
+        bodyContainerElement.appendChild(titleElement)
+        bodyContainerElement.appendChild(likesElement)
+        mediaContainerElement.appendChild(mediaElement)
+
+        likesElement.appendChild(likesCounterElement)
+        likesElement.appendChild(likesIconElement)
+
+        return articleElement
+    }
+
+    return { getImageMediaCardDOM, getVideoMediaCardDOM }
 }

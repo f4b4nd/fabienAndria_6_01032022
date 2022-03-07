@@ -70,8 +70,16 @@ async function displayMediaDatas (mediaDatas) {
     const photographerModel = photographerMediasFactory()
 
     mediaDatas.forEach((mediaData) => {
-        const mediaCardDOM = photographerModel.getMediaCardDOM(mediaData)
-        mediaSection.appendChild(mediaCardDOM)
+
+        if (mediaData.image) {
+            const mediaCardDOM = photographerModel.getImageMediaCardDOM(mediaData)
+            mediaSection.appendChild(mediaCardDOM)
+        }
+        else if (mediaData.video) {
+            const mediaCardDOM = photographerModel.getVideoMediaCardDOM(mediaData)
+            mediaSection.appendChild(mediaCardDOM)
+        }
+        
     })
 
 }
