@@ -15,23 +15,25 @@ async function getData () {
     return data
 }
 
+
 class AbstractFactory {
 
-    createHierarchizedElement (elementSchema) {
+    getHierarchizedElementDOM (elementSchema) {
         
         if (Object.keys(elementSchema).length === 1) {
-            const elementSchemaValue = Object.values(elementSchema)[0]
-            return this.createElement(elementSchemaValue)          
+            const key = Object.keys(elementSchema)[0]
+            const hierarchizedElementDOM = elementSchema[key]
+            return this.getElementDOM(hierarchizedElementDOM)          
         }
 
-        const hierarchizedElementDOM = Object.values(elementSchema).reduce((accumulator, currentSchema) => {
+        const hierarchizedElementDOM = Object.values(elementSchema).reduce((accumulator, currentElementSchema) => {
 
-            const accumulatorDOM = accumulator instanceof HTMLElement ? accumulator : this.createElement(accumulator)
-            const currentDOM =  this.createElement (currentSchema)   
+            const accumulatorDOM = accumulator instanceof HTMLElement ? accumulator : this.getElementDOM(accumulator)
+            const currentElementDOM = this.getElementDOM(currentElementSchema)   
             
-            if (currentSchema.parent) {
-                let parentDOM =   accumulatorDOM.querySelector(currentSchema.parent) || accumulatorDOM
-                parentDOM.appendChild(currentDOM)         
+            if (currentElementSchema.parent) {
+                const parentDOM = accumulatorDOM.querySelector(currentElementSchema.parent) || accumulatorDOM
+                parentDOM.appendChild(currentElementDOM)         
             }
        
             return accumulatorDOM
@@ -42,7 +44,7 @@ class AbstractFactory {
     }
 
 
-    createElement (elementSchema) {
+    getElementDOM (elementSchema) {
             
         const elementDOM = document.createElement(elementSchema.tagHTML)
 
@@ -63,6 +65,7 @@ class AbstractFactory {
     }
 
 }
+
 
 class PhotographerFactory extends AbstractFactory {
 
@@ -135,7 +138,7 @@ class PhotographerFactory extends AbstractFactory {
             }
         }
 
-        return this.createHierarchizedElement (userCardSchema)
+        return this.getHierarchizedElementDOM (userCardSchema)
     }
 
     getUserMetaCardDOM () {
@@ -165,7 +168,7 @@ class PhotographerFactory extends AbstractFactory {
             }
         }
 
-        return this.createHierarchizedElement (userMetaCardSchema)
+        return this.getHierarchizedElementDOM (userMetaCardSchema)
     }
 
     getUserPortraitDOM () {
@@ -181,11 +184,12 @@ class PhotographerFactory extends AbstractFactory {
             }
         }
 
-        return this.createHierarchizedElement(userPortraitSchema)
+        return this.getHierarchizedElementDOM(userPortraitSchema)
 
     }
 
 }
+
 
 function photographerMediasFactory () {
 
