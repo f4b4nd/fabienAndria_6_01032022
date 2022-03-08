@@ -122,10 +122,15 @@ function photographerMediasFactory () {
 
         bodyContainerElement.classList.add('article__body')
         imageContainerElement.classList.add('article__image')
+        likesElement.classList.add('likes-wrapper')
         likesCounterElement.classList.add('likes-counter')
         likesIconElement.classList.add('fa-solid', 'fa-heart')
 
-        articleElement.onclick = function () { displayLightbox() }
+        imageContainerElement.onclick = function () { displayLightbox() }
+
+        likesIconElement.onclick = function () { 
+            likesCounterElement.textContent = parseInt(likesCounterElement.textContent) + 1
+        }
 
         articleElement.appendChild(imageContainerElement)
         articleElement.appendChild(bodyContainerElement)
@@ -162,11 +167,16 @@ function photographerMediasFactory () {
 
         bodyContainerElement.classList.add('article__body')
         mediaContainerElement.classList.add('article__video')
+        likesElement.classList.add('likes-wrapper')
         likesCounterElement.classList.add('likes-counter')
         likesIconElement.classList.add('fa-solid', 'fa-heart')
 
-        articleElement.onclick = function () { displayLightbox() }
+        mediaContainerElement.onclick = function () { displayLightbox() }
 
+        likesIconElement.onclick = function () { 
+            likesCounterElement.textContent = parseInt(likesCounterElement.textContent) + 1
+        }
+        
         articleElement.appendChild(mediaContainerElement)
         articleElement.appendChild(bodyContainerElement)
 
