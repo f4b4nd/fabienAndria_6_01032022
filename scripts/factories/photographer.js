@@ -39,32 +39,22 @@ class AbstractFactory {
         }
     }
      
-    
     */
-    constructor () {
-        // super()
-        // this.elements = elements
-    }
 
-    createMergedElementOnDOM (elements) {
+    createHierarchizedDOMElement (elements) {
         
-        //const rootElement = elements.filter(e => e.root)[0]
-        //const rootElementDOM = this.createSubElementsOnDOM(rootElement)
 
         const reducedElement = Object.values(elements).reduce((accumulator, currentElement) => {
 
-            const accumulatorDOM = accumulator instanceof HTMLElement ? accumulator : this.createElementOnDOM(accumulator)
-            const currentDOM =  this.createElementOnDOM (currentElement)
-
-            console.log('accumulator', accumulatorDOM)
-            console.log('current', currentDOM)
+            const accumulatorDOM = accumulator instanceof HTMLElement ? accumulator : this.createDOMElement(accumulator)
+            const currentDOM =  this.createDOMElement (currentElement)   
             
-            let parentDOM = accumulatorDOM.querySelector('.card')
-            console.log('parent', currentElement.parent)
-            console.log('parentDOM', parentDOM)
-            parentDOM.appendChild(currentDOM)
+            if (currentElement.parent) {
+                let parentDOM =  accumulatorDOM.querySelector(currentElement.parent) || accumulatorDOM
+                parentDOM.appendChild(currentDOM)         
+            }
+       
             return accumulatorDOM
-            //accumulatorDOM
             
         })
 
@@ -72,28 +62,22 @@ class AbstractFactory {
     }
 
 
-    createElementOnDOM (element) {
+    createDOMElement (element) {
             
-        const elementOnDOM = document.createElement(`div`)
-        //console.log('type', element.type)
+        const elementOnDOM = document.createElement(element.tagHTML)
 
         if (element.classnames) {
             element.classnames.forEach(classname => elementOnDOM.classList.add(classname))
         }
 
         if (element.attributes) {
-            //Object.entries(element.attributes).forEach(([key, value]) => elementOnDOM.setAttribute(key, value))
+            Object.entries(element.attributes).forEach(([attributeName, attributeValue]) => elementOnDOM.setAttribute(attributeName, attributeValue))
         }
 
         if (element.text) {
             elementOnDOM.textContent = element.text
         }
 
-        if (element.parent) {
-            //elements[element.parent].appendChild(elementOnDOM)               
-        }
-
-        // console.log('element', elementOnDOM)
         return elementOnDOM
 
     }
@@ -113,65 +97,65 @@ class PhotographerFactory extends AbstractFactory {
 
     getUserCardDOM () {
 
-        const userCard = {
+        const userCardSchema = {
             article : {
-                type: 'article',
+                tagHTML: 'article',
                 classnames: ['card'],
-                root: true
+                root: true,
             },
             a : {
-                type: 'a',            
+                tagHTML: 'a',            
                 classnames: ['card__header'],
                 attributes: {
                     href: this.urlPhotographer
                 },
-                parent : 'article'
+                parent : '.card'
             },
             imageContainer : {
-                type: 'div',
+                tagHTML: 'div',
                 classnames: ['card__header__image'],
-                parent: 'a',
+                parent: '.card__header',
             },
             img: {
-                type: 'img',
+                tagHTML: 'img',
                 attributes : {
                     alt: this.data.tagline,
                     src: this.imageSource
                 },
-                parent: 'imageContainer'
+                parent: '.card__header__image'
             },
             h2 : {
-                type: 'h2',
+                tagHTML: 'h2',
                 classnames: ['card__header__title'],
                 text: this.data.name,
-                parent: 'a'
+                parent: '.card__header'
             },
             bodyContainer : {
-                type: 'div',
+                tagHTML: 'div',
                 classnames: ['card__body'],
-                parent: 'article'
+                parent: '.card'
             },
             location : {
-                type: 'div',
+                tagHTML: 'div',
                 classnames: ['card__body__location'],
                 text: this.location,
-                parent: 'bodyContainer'
+                parent: '.card__body'
             },
             tagline : {
-                type: 'div',
+                tagHTML: 'div',
                 classnames: ['card__body__tagline'],
                 text: this.data.tagline, 
-                parent: 'bodyContainer'             
+                parent: '.card__body'             
             },
             price : {
-                type: 'div',
+                tagHTML: 'div',
                 classnames: ['card__body__price'],
                 text: this.price,
-                parent: 'bodyContainer'
+                parent: '.card__body'
             }
         }
 
-        return this.createMergedElementOnDOM (userCard)
+        return this.createHierarchizedDOMElement (userCardSchema)
     }
 }
 

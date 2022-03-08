@@ -10,11 +10,9 @@ async function displayData(photographers) {
 
     const sectionDOM = document.querySelector(".photographer_section")
 
-    const singlePhotographer = [photographers[0]]
-    singlePhotographer.forEach((photographerData) => {
+    photographers.forEach((photographerData) => {
         const model = new PhotographerFactory(photographerData)
         const userCardDOM = model.getUserCardDOM()
-        //console.log(userCardDOM)
         sectionDOM.appendChild(userCardDOM)
     })
 
