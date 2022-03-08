@@ -56,9 +56,10 @@ async function displayMetaData (metaData) {
     const metaTextSection = document.querySelector(".photograph__meta__text")
     const metaPortraitSection = document.querySelector('.photograph__meta__portrait')
 
-    const photographerModel = photographerFactory(metaData)
-    const userCardMetaDOM = photographerModel.getUserCardMetaDOM()
-    const userPortraitDOM = photographerModel.getUserPortraitDOM()
+    //const photographerModel = photographerFactory(metaData)
+    const model = new PhotographerFactory(metaData)
+    const userCardMetaDOM = model.getUserMetaCardDOM()
+    const userPortraitDOM = model.getUserPortraitDOM()
 
     metaTextSection.appendChild(userCardMetaDOM)
     metaPortraitSection.appendChild(userPortraitDOM)
@@ -131,7 +132,7 @@ async function orderMediaDatas(value) {
 
 function clearMediaData () {
     const section = document.querySelector(".photograph__media .cards")
-    
+
     while (section.firstChild) {
         section.removeChild(section.lastChild)
     }

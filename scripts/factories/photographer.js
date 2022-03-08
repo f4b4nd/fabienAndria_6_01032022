@@ -16,41 +16,23 @@ async function getData () {
 }
 
 class AbstractFactory {
-    /* 
-    elements = {
-        article: {
-            type: 'div'
-            classnames: ['card', 'user-card'],
-        },
-        image : {
-            type : 'img',
-            parent : 'article',
-            classnames : ['img', 'img-black'],
-            attributes: {
-                src: 'assets/photographers',
-                alt: 'je suis rouge'
-            }
-        },
-        h2 : {
-            type: 'div',
-            parent : 'article',
-            classnames : ['title'],
-            text: 'je suis un titre',
-        }
-    }
-     
-    */
 
-    createHierarchizedDOMElement (elements) {
+    createHierarchizedElement (elementSchema) {
         
+        if (Object.keys(elementSchema).length == 1) {
+            console.log('sch', elementSchema)
+            const hie =  this.createElement(elementSchema)
+            console.log(hie)
+            return hie
+        }
 
-        const reducedElement = Object.values(elements).reduce((accumulator, currentElement) => {
+        const hierarchizedElementDOM = Object.values(elementSchema).reduce((accumulator, currentSchema) => {
 
-            const accumulatorDOM = accumulator instanceof HTMLElement ? accumulator : this.createDOMElement(accumulator)
-            const currentDOM =  this.createDOMElement (currentElement)   
+            const accumulatorDOM = accumulator instanceof HTMLElement ? accumulator : this.createElement(accumulator)
+            const currentDOM =  this.createElement (currentSchema)   
             
-            if (currentElement.parent) {
-                let parentDOM =  accumulatorDOM.querySelector(currentElement.parent) || accumulatorDOM
+            if (currentSchema.parent) {
+                let parentDOM =   accumulatorDOM.querySelector(currentSchema.parent) || accumulatorDOM
                 parentDOM.appendChild(currentDOM)         
             }
        
@@ -58,27 +40,27 @@ class AbstractFactory {
             
         })
 
-        return reducedElement
+        return hierarchizedElementDOM
     }
 
 
-    createDOMElement (element) {
+    createElement (elementSchema) {
             
-        const elementOnDOM = document.createElement(element.tagHTML)
+        const elementDOM = document.createElement(elementSchema.tagHTML)
 
-        if (element.classnames) {
-            element.classnames.forEach(classname => elementOnDOM.classList.add(classname))
+        if (elementSchema.classnames) {
+            elementSchema.classnames.forEach(classname => elementDOM.classList.add(classname))
         }
 
-        if (element.attributes) {
-            Object.entries(element.attributes).forEach(([attributeName, attributeValue]) => elementOnDOM.setAttribute(attributeName, attributeValue))
+        if (elementSchema.attributes) {
+            Object.entries(elementSchema.attributes).forEach(([attributeName, attributeValue]) => elementDOM.setAttribute(attributeName, attributeValue))
         }
 
-        if (element.text) {
-            elementOnDOM.textContent = element.text
+        if (elementSchema.text) {
+            elementDOM.textContent = elementSchema.text
         }
 
-        return elementOnDOM
+        return elementDOM
 
     }
 
@@ -104,59 +86,106 @@ class PhotographerFactory extends AbstractFactory {
                 root: true,
             },
             a : {
-                tagHTML: 'a',            
+                tagHTML: 'a',
+                parent : '.card',   
                 classnames: ['card__header'],
                 attributes: {
                     href: this.urlPhotographer
                 },
-                parent : '.card'
             },
             imageContainer : {
                 tagHTML: 'div',
-                classnames: ['card__header__image'],
                 parent: '.card__header',
+                classnames: ['card__header__image'],
             },
             img: {
                 tagHTML: 'img',
+                parent: '.card__header__image',
                 attributes : {
                     alt: this.data.tagline,
                     src: this.imageSource
                 },
-                parent: '.card__header__image'
             },
             h2 : {
                 tagHTML: 'h2',
+                parent: '.card__header',
                 classnames: ['card__header__title'],
                 text: this.data.name,
-                parent: '.card__header'
             },
             bodyContainer : {
                 tagHTML: 'div',
+                parent: '.card',
                 classnames: ['card__body'],
-                parent: '.card'
             },
             location : {
                 tagHTML: 'div',
+                parent: '.card__body',
                 classnames: ['card__body__location'],
                 text: this.location,
-                parent: '.card__body'
             },
             tagline : {
                 tagHTML: 'div',
+                parent: '.card__body',
                 classnames: ['card__body__tagline'],
                 text: this.data.tagline, 
-                parent: '.card__body'             
             },
             price : {
-                tagHTML: 'div',
+                tagHTML: 'p',
+                parent: '.card__body',
                 classnames: ['card__body__price'],
                 text: this.price,
-                parent: '.card__body'
             }
         }
 
-        return this.createHierarchizedDOMElement (userCardSchema)
+        return this.createHierarchizedElement (userCardSchema)
     }
+
+    getUserMetaCardDOM () {
+        const userMetaCardSchema = {
+            article : {
+                tagHTML: 'article',
+                classnames: ['card'],
+                root: true,
+            },
+            h1: {
+                tagHTML: 'h1',                
+                parent: '.card',
+                classnames: ['card__title'],
+                text: this.data.name
+            },
+            location : {
+                tagHTML: 'div',
+                parent: '.card',
+                classnames: ['card__location'],
+                text: this.location,
+            },
+            tagline : {
+                tagHTML: 'p',
+                parent: '.card',
+                classnames: ['card__tagline'],
+                text: this.data.tagline
+            }
+        }
+
+        return this.createHierarchizedElement (userMetaCardSchema)
+    }
+
+    getUserPortraitDOM () {
+
+        const userPortraitSchema = {
+            img: {
+                tagHTML: 'img',
+                attributes: {
+                    src: this.imageSource,
+                    alt: this.data.name
+                }
+            }
+        }
+
+        return this.createHierarchizedElement(userPortraitSchema)
+
+    }
+
 }
 
 function photographerFactory(data) {
@@ -167,50 +196,7 @@ function photographerFactory(data) {
     const urlPhotographer = `photographer.html?id=${data.id}`
     const location = `${data.city}, ${data.country}`
     const tagline = data.tagline
-    const price = `${data.price}€/jour`
-
-    function getUserCardDOM() {
-
-        const articleElement = document.createElement('article')
-        const aElement = document.createElement('a')
-        const imageContainerElement = document.createElement('div')
-        const bodyContainerElement = document.createElement('div')
-
-        const imgElement = document.createElement('img')
-        const h2Element = document.createElement('h2')
-        const locationElement = document.createElement('div')
-        const taglineElement = document.createElement('div')
-        const priceElement = document.createElement('div')
-
-        aElement.setAttribute('href', urlPhotographer)
-        imgElement.setAttribute("src", picture)
-        imgElement.setAttribute('alt', name)
-
-        h2Element.textContent = data.name
-        locationElement.textContent = location
-        taglineElement.textContent = tagline
-        priceElement.textContent = price        
-        
-        imageContainerElement.classList.add('article__image')
-        bodyContainerElement.classList.add('article__body')
-        locationElement.classList.add('location')
-        taglineElement.classList.add('tagline')
-        priceElement.classList.add('price')
-
-        articleElement.appendChild(aElement)
-        articleElement.appendChild(bodyContainerElement)
-
-        aElement.appendChild(imageContainerElement)
-        aElement.appendChild(h2Element)
-
-        imageContainerElement.appendChild(imgElement)
-        bodyContainerElement.appendChild(locationElement)
-        bodyContainerElement.appendChild(taglineElement)
-        bodyContainerElement.appendChild(priceElement)
-
-        return articleElement
-
-    }
+    const price = `${data.price}€/jour`   
 
     function getUserCardMetaDOM () {
 
@@ -239,7 +225,7 @@ function photographerFactory(data) {
     }
 
 
-    return { name, picture, getUserCardDOM, getUserCardMetaDOM, getUserPortraitDOM }
+    return { name, picture, getUserCardMetaDOM, getUserPortraitDOM }
 }
 
 function photographerMediasFactory () {
