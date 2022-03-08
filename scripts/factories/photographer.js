@@ -15,7 +15,165 @@ async function getData () {
     return data
 }
 
+class AbstractFactory {
+    /* 
+    elements = {
+        article: {
+            type: 'div'
+            classnames: ['card', 'user-card'],
+        },
+        image : {
+            type : 'img',
+            parent : 'article',
+            classnames : ['img', 'img-black'],
+            attributes: {
+                src: 'assets/photographers',
+                alt: 'je suis rouge'
+            }
+        },
+        h2 : {
+            type: 'div',
+            parent : 'article',
+            classnames : ['title'],
+            text: 'je suis un titre',
+        }
+    }
+     
+    
+    */
+    constructor () {
+        // super()
+        // this.elements = elements
+    }
 
+    createMergedElementOnDOM (elements) {
+        
+        //const rootElement = elements.filter(e => e.root)[0]
+        //const rootElementDOM = this.createSubElementsOnDOM(rootElement)
+
+        const reducedElement = Object.values(elements).reduce((accumulator, currentElement) => {
+
+            const accumulatorDOM = accumulator instanceof HTMLElement ? accumulator : this.createElementOnDOM(accumulator)
+            const currentDOM =  this.createElementOnDOM (currentElement)
+
+            console.log('accumulator', accumulatorDOM)
+            console.log('current', currentDOM)
+            
+            let parentDOM = accumulatorDOM.querySelector('.card')
+            console.log('parent', currentElement.parent)
+            console.log('parentDOM', parentDOM)
+            parentDOM.appendChild(currentDOM)
+            return accumulatorDOM
+            //accumulatorDOM
+            
+        })
+
+        return reducedElement
+    }
+
+
+    createElementOnDOM (element) {
+            
+        const elementOnDOM = document.createElement(`div`)
+        //console.log('type', element.type)
+
+        if (element.classnames) {
+            element.classnames.forEach(classname => elementOnDOM.classList.add(classname))
+        }
+
+        if (element.attributes) {
+            //Object.entries(element.attributes).forEach(([key, value]) => elementOnDOM.setAttribute(key, value))
+        }
+
+        if (element.text) {
+            elementOnDOM.textContent = element.text
+        }
+
+        if (element.parent) {
+            //elements[element.parent].appendChild(elementOnDOM)               
+        }
+
+        // console.log('element', elementOnDOM)
+        return elementOnDOM
+
+    }
+
+}
+
+class PhotographerFactory extends AbstractFactory {
+
+    constructor (data) {
+        super()
+        this.data = data
+        this.urlPhotographer = `photographer.html?id=${this.data.id}`
+        this.imageSource = `assets/photographers/${this.data.portrait}`
+        this.location = `${this.data.city}, ${this.data.country}`
+        this.price = `${this.data.price}€/jour`
+    }
+
+    getUserCardDOM () {
+
+        const userCard = {
+            article : {
+                type: 'article',
+                classnames: ['card'],
+                root: true
+            },
+            a : {
+                type: 'a',            
+                classnames: ['card__header'],
+                attributes: {
+                    href: this.urlPhotographer
+                },
+                parent : 'article'
+            },
+            imageContainer : {
+                type: 'div',
+                classnames: ['card__header__image'],
+                parent: 'a',
+            },
+            img: {
+                type: 'img',
+                attributes : {
+                    alt: this.data.tagline,
+                    src: this.imageSource
+                },
+                parent: 'imageContainer'
+            },
+            h2 : {
+                type: 'h2',
+                classnames: ['card__header__title'],
+                text: this.data.name,
+                parent: 'a'
+            },
+            bodyContainer : {
+                type: 'div',
+                classnames: ['card__body'],
+                parent: 'article'
+            },
+            location : {
+                type: 'div',
+                classnames: ['card__body__location'],
+                text: this.location,
+                parent: 'bodyContainer'
+            },
+            tagline : {
+                type: 'div',
+                classnames: ['card__body__tagline'],
+                text: this.data.tagline, 
+                parent: 'bodyContainer'             
+            },
+            price : {
+                type: 'div',
+                classnames: ['card__body__price'],
+                text: this.price,
+                parent: 'bodyContainer'
+            }
+        }
+
+        return this.createMergedElementOnDOM (userCard)
+    }
+}
 
 function photographerFactory(data) {
 
