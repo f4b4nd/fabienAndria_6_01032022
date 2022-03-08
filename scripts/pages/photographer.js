@@ -66,7 +66,8 @@ async function displayMetaData (metaData) {
 }
 
 async function displayMediaDatas (mediaDatas) {
-    const mediaSection = document.querySelector(".photograph__media .cards")
+
+    const section = document.querySelector(".photograph__media .cards")
 
     const photographerModel = photographerMediasFactory()
 
@@ -74,11 +75,11 @@ async function displayMediaDatas (mediaDatas) {
 
         if (mediaData.image) {
             const mediaCardDOM = photographerModel.getImageMediaCardDOM(mediaData)
-            mediaSection.appendChild(mediaCardDOM)
+            section.appendChild(mediaCardDOM)
         }
         else if (mediaData.video) {
             const mediaCardDOM = photographerModel.getVideoMediaCardDOM(mediaData)
-            mediaSection.appendChild(mediaCardDOM)
+            section.appendChild(mediaCardDOM)
         }
         
     })
@@ -129,9 +130,10 @@ async function orderMediaDatas(value) {
 }
 
 function clearMediaData () {
-    const mediaSection = document.querySelector(".photograph__media .cards")
-    while (mediaSection.firstChild) {
-        mediaSection.removeChild(mediaSection.lastChild)
+    const section = document.querySelector(".photograph__media .cards")
+    
+    while (section.firstChild) {
+        section.removeChild(section.lastChild)
     }
 }
 

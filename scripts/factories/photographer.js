@@ -15,6 +15,8 @@ async function getData () {
     return data
 }
 
+
+
 function photographerFactory(data) {
 
     const { name, portrait } = data
@@ -100,6 +102,16 @@ function photographerFactory(data) {
 
 function photographerMediasFactory () {
 
+    function incrementLikesCounter (likes, likesCounterElement) {
+        likesDOM = parseInt(likesCounterElement.textContent)
+        if (likes === likesDOM) {
+            likesCounterElement.textContent = likesDOM + 1
+        }
+        else {
+            likesCounterElement.textContent = likes
+        }
+    }
+
     function getImageMediaCardDOM (mediaData) {
 
         const { id, title, image, likes } = mediaData
@@ -128,9 +140,7 @@ function photographerMediasFactory () {
 
         imageContainerElement.onclick = function () { displayLightbox() }
 
-        likesIconElement.onclick = function () { 
-            likesCounterElement.textContent = parseInt(likesCounterElement.textContent) + 1
-        }
+        likesIconElement.onclick = () => incrementLikesCounter (likes, likesCounterElement)
 
         articleElement.appendChild(imageContainerElement)
         articleElement.appendChild(bodyContainerElement)
@@ -173,10 +183,9 @@ function photographerMediasFactory () {
 
         mediaContainerElement.onclick = function () { displayLightbox() }
 
-        likesIconElement.onclick = function () { 
-            likesCounterElement.textContent = parseInt(likesCounterElement.textContent) + 1
-        }
         
+        likesIconElement.onclick = () => incrementLikesCounter (likes, likesCounterElement)
+
         articleElement.appendChild(mediaContainerElement)
         articleElement.appendChild(bodyContainerElement)
 
