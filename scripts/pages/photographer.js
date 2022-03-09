@@ -1,7 +1,7 @@
 import getData from "../utils/fetch.js"
-import PhotographerFactory  from "../factories/photographer.js"
-import PhotographerMediasFactory from "../factories/media.js"
-import PhotographerPopupFactory from "../factories/popup.js"
+import UserFactory  from "../components/user.js"
+import MediasFactory from "../components/media.js"
+import LikesCounterPopupFactory from "../components/popup.js"
 
 function getPhotographerID () {
     const urlQueryString = window.location.search
@@ -24,15 +24,15 @@ export async function getPhotographerData () {
 
 function displayMetaData (metaData) {
 
-    const model = new PhotographerFactory(metaData)
-    const userCardMetaDOM = model.getUserMetaCardDOM()
-    const userPortraitDOM = model.getUserPortraitDOM()
+    const factory = new UserFactory(metaData)
+    const userCardMeta = factory.getUserMetaCardComponent()
+    const userPortrait = factory.getUserPortraitComponent()
 
     const textSection = document.querySelector(".photograph__meta__text")
     const portraitSection = document.querySelector('.photograph__meta__portrait')
 
-    textSection.appendChild(userCardMetaDOM)
-    portraitSection.appendChild(userPortraitDOM)
+    textSection.appendChild(userCardMeta)
+    portraitSection.appendChild(userPortrait)
 
 }
 
@@ -41,9 +41,9 @@ export function displayMediaDatas (mediaDatas) {
     const section = document.querySelector(".photograph__media .cards")
 
     mediaDatas.forEach((mediaData) => {
-        const model = new PhotographerMediasFactory(mediaData)
-        const mediaCardDOM = model.getMediaCardDOM()
-        section.appendChild(mediaCardDOM)        
+        const factory = new MediasFactory(mediaData)
+        const mediaCard = factory.getMediaCardComponent()
+        section.appendChild(mediaCard)        
     })
 
 }
@@ -54,11 +54,11 @@ function displayPopupData (metaData, mediaDatas) {
     const totalLikes = Object.values(mediaDatas).reduce((acc, current) => acc + current.likes, 0)
     const price = metaData.price
 
-    const model = new PhotographerPopupFactory(totalLikes, price)
-    const popupDOM = model.getPhotographerPopupDOM()
+    const factory = new LikesCounterPopupFactory(totalLikes, price)
+    const likesCounterPopup = factory.getLikesCounterPopupComponent()
 
-    const sectionDOM = document.querySelector(".photograph__popup")
-    sectionDOM.appendChild(popupDOM)
+    const section = document.querySelector(".photograph__popup")
+    section.appendChild(likesCounterPopup)
 
 }
 

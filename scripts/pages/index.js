@@ -1,5 +1,5 @@
 import getData from "../utils/fetch.js" 
-import PhotographerFactory from "../factories/photographer.js"
+import UserFactory from "../components/user.js"
  
 
 async function getPhotographers() {
@@ -14,9 +14,9 @@ function displayData(photographers) {
     const sectionDOM = document.querySelector(".photographer__section")
 
     photographers.forEach((photographerData) => {
-        const model = new PhotographerFactory(photographerData)
-        const userCardDOM = model.getUserCardDOM()
-        sectionDOM.appendChild(userCardDOM)
+        const factory = new UserFactory(photographerData)
+        const userCard = factory.getUserCardComponent()
+        sectionDOM.appendChild(userCard)
     })
 
 }

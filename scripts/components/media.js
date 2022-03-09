@@ -1,7 +1,7 @@
 import AbstractFactory from "./abstract.js"
 import { displayLightbox } from "../utils/lightbox.js"
 
-export default class PhotographerMediasFactory extends AbstractFactory {
+export default class MediasFactory extends AbstractFactory {
 
     constructor(data) {
         super()
@@ -10,9 +10,9 @@ export default class PhotographerMediasFactory extends AbstractFactory {
         this.mediaSource = `assets/media/${data.image ? data.image : data.video}`
     }
 
-    getMediaCardDOM () {
+    getMediaCardComponent () {
         const mediaCardSchema = this.data.image ? this.getImageMediaCardSchema() : this.getVideoMediaCardSchema()
-        return this.getHierarchizedElementDOM(mediaCardSchema)
+        return this.getHierarchizedComponent(mediaCardSchema)
     }
 
     getMediaCardSchema () {

@@ -11,6 +11,7 @@ export function displayLightbox (mediaElement, data) {
     const pm = lightbox.getPreviousMedia()
     console.log('#p', p, '#c', c, '#n', n)
     console.log('pm', pm)
+    
     const lightboxPrevious = document.querySelector('.lightbox__previous')
     const lightboxNext = document.querySelector('.lightbox__next')
     lightboxPrevious.addEventListener('click', () => lightbox.setLightboxPreviousMedia())
@@ -27,8 +28,6 @@ function closeLightbox () {
 const closeLightBoxBtn = document.querySelector('#lightbox .close-btn')
 closeLightBoxBtn.addEventListener('click', closeLightbox)
 
-
-const lightboxNext = document.querySelector('.lightbox__next')
 
 export class LightboxFactory {
 
@@ -73,30 +72,35 @@ export class LightboxFactory {
         return nodes
     }
 
+    /***CURRENT */
     getCurrentNodeIndex() {
         const nodes = this.getCardsNodes()
         const currentNodeIndex = Array.from(nodes).findIndex(node => node === this.getCardParentNode())
         return currentNodeIndex
     }
 
+    /***PREVIOUS */
     getPreviousNodeIndex () {
         const currentIndex = this.getCurrentNodeIndex()
         const previousNodeIndex = currentIndex > 0 ? currentIndex - 1 : this.getCardsNodes().length - 1
         return previousNodeIndex
     }
-
-    getNextNodeIndex () {
-        const currentIndex = this.getCurrentNodeIndex()
-        const nextNodeIndex = currentIndex < this.getCardsNodes().length - 1 ? currentIndex + 1 : 0
-        return nextNodeIndex
-    }
-
+    
     getPreviousMedia(){
         const previousIndex = this.getPreviousNodeIndex()
         const previousNode = this.getCardsNodes().item(previousIndex)
         const previousMedia = previousNode.querySelector('img, video')
         return previousMedia
     }
+
+    /*** NEXT */
+    getNextNodeIndex () {
+        const currentIndex = this.getCurrentNodeIndex()
+        const nextNodeIndex = currentIndex < this.getCardsNodes().length - 1 ? currentIndex + 1 : 0
+        return nextNodeIndex
+    }
+
+
 
     getNextMedia(){
         const nextIndex = this.getNextNodeIndex()

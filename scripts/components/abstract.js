@@ -1,6 +1,6 @@
 export default class AbstractFactory {
 
-    getElementDOM (elementSchema) {
+    getComponent (elementSchema) {
             
         const elementDOM = document.createElement(elementSchema.tagHTML)
 
@@ -29,17 +29,17 @@ export default class AbstractFactory {
 
     }
 
-    getHierarchizedElementDOM (elementSchema) {
+    getHierarchizedComponent (elementSchema) {
         
         if (Object.keys(elementSchema).length === 1) {
             const key = Object.keys(elementSchema)[0]
-            return this.getElementDOM(elementSchema[key])          
+            return this.getComponent(elementSchema[key])          
         }
 
-        const hierarchizedElementDOM = Object.values(elementSchema).reduce((accumulator, currentElementSchema) => {
+        const hierarchizedComponent = Object.values(elementSchema).reduce((accumulator, currentElementSchema) => {
 
-            const accumulatorDOM = accumulator instanceof HTMLElement ? accumulator : this.getElementDOM(accumulator)
-            const currentElementDOM = this.getElementDOM(currentElementSchema)   
+            const accumulatorDOM = accumulator instanceof HTMLElement ? accumulator : this.getComponent(accumulator)
+            const currentElementDOM = this.getComponent(currentElementSchema)   
             
             if (currentElementSchema.parent) {
                 const parentDOM = accumulatorDOM.querySelector(currentElementSchema.parent) || accumulatorDOM
@@ -50,7 +50,7 @@ export default class AbstractFactory {
             
         })
 
-        return hierarchizedElementDOM
+        return hierarchizedComponent
     }
 
 }

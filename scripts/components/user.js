@@ -1,6 +1,6 @@
 import AbstractFactory from "./abstract.js"
 
-export default class PhotographerFactory extends AbstractFactory {
+export default class UserFactory extends AbstractFactory {
 
     constructor (data) {
         super()
@@ -11,7 +11,7 @@ export default class PhotographerFactory extends AbstractFactory {
         this.price = `${data.price}€/jour`
     }
 
-    getUserCardDOM () {
+    getUserCardComponent () {
 
         const userCardSchema = {
             article : {
@@ -71,10 +71,10 @@ export default class PhotographerFactory extends AbstractFactory {
             }
         }
 
-        return this.getHierarchizedElementDOM (userCardSchema)
+        return this.getHierarchizedComponent (userCardSchema)
     }
 
-    getUserMetaCardDOM () {
+    getUserMetaCardComponent () {
         const userMetaCardSchema = {
             article : {
                 tagHTML: 'article',
@@ -101,10 +101,10 @@ export default class PhotographerFactory extends AbstractFactory {
             }
         }
 
-        return this.getHierarchizedElementDOM (userMetaCardSchema)
+        return this.getHierarchizedComponent (userMetaCardSchema)
     }
 
-    getUserPortraitDOM () {
+    getUserPortraitComponent () {
 
         const userPortraitSchema = {
             img: {
@@ -117,7 +117,7 @@ export default class PhotographerFactory extends AbstractFactory {
             }
         }
 
-        return this.getHierarchizedElementDOM(userPortraitSchema)
+        return this.getHierarchizedComponent(userPortraitSchema)
 
     }
 

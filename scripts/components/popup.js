@@ -1,6 +1,6 @@
 import AbstractFactory from "./abstract.js"
 
-export default class PhotographerPopupFactory extends AbstractFactory {
+export default class LikesCounterPopupFactory extends AbstractFactory {
 
     constructor (totalLikes, price) {
         super()
@@ -8,9 +8,9 @@ export default class PhotographerPopupFactory extends AbstractFactory {
         this.price = `${price}€ / jour`
     }
 
-    getPhotographerPopupDOM () {
+    getLikesCounterPopupComponent () {
 
-        const photographerPopupSchema = {
+        const likesCounterPopupSchema = {
             popup: {
                 tagHTML: 'div',
                 root: true,
@@ -40,7 +40,7 @@ export default class PhotographerPopupFactory extends AbstractFactory {
             }
         }
 
-        return this.getHierarchizedElementDOM(photographerPopupSchema)
+        return this.getHierarchizedComponent(likesCounterPopupSchema)
     }
 
 }
