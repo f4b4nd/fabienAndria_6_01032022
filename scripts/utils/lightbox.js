@@ -1,7 +1,7 @@
 import clearHTMLNode from "./clearHTMLNode.js"
 
-export function displayLightbox (mediaElement, data) {
-    const lightbox = new LightboxFactory(mediaElement, data)
+export function displayLightbox (mediaElement) {
+    const lightbox = new LightboxFactory(mediaElement)
     lightbox.displayLightbox()
     lightbox.setLightboxMedia()
     //lightbox.getCardsDOM()
@@ -11,7 +11,7 @@ export function displayLightbox (mediaElement, data) {
     const pm = lightbox.getPreviousMedia()
     console.log('#p', p, '#c', c, '#n', n)
     console.log('pm', pm)
-    
+
     const lightboxPrevious = document.querySelector('.lightbox__previous')
     const lightboxNext = document.querySelector('.lightbox__next')
     lightboxPrevious.addEventListener('click', () => lightbox.setLightboxPreviousMedia())
@@ -31,10 +31,11 @@ closeLightBoxBtn.addEventListener('click', closeLightbox)
 
 export class LightboxFactory {
 
-    constructor(mediaElement, data) {
+    constructor(mediaElement) {
         this.mediaElement = mediaElement.srcElement
         this.lightbox = document.querySelector('#lightbox')
-        this.data = data
+        this.lightboxMedia = this.lightbox.querySelector('.lightbox__media')
+        this.currentNodeIndex = this.getCurrentNodeIndex()
     }
 
     displayLightbox () {    
@@ -42,24 +43,23 @@ export class LightboxFactory {
     }
 
     setLightboxMedia() {
-        const lightboxMediaDOM = this.lightbox.querySelector('.lightbox__media')
-        clearHTMLNode(lightboxMediaDOM)
+        clearHTMLNode(this.lightboxMedia)
         const newMediaElement = this.mediaElement.cloneNode(true)
-        lightboxMediaDOM.appendChild(newMediaElement)
+        this.lightboxMedia.appendChild(newMediaElement)
     }
 
     setLightboxNextMedia() {
-        const lightboxMediaDOM = this.lightbox.querySelector('.lightbox__media')
-        clearHTMLNode(lightboxMediaDOM)
+        clearHTMLNode(this.lightboxMedia)
         const newMediaElement = this.getNextMedia().cloneNode(true)
-        lightboxMediaDOM.appendChild(newMediaElement)    
+        this.lightboxMedia.appendChild(newMediaElement)
+        this.currentNodeIndex = this.getNextNodeIndex()
     }
 
     setLightboxPreviousMedia() {
-        const lightboxMediaDOM = this.lightbox.querySelector('.lightbox__media')
-        clearHTMLNode(lightboxMediaDOM)
+        clearHTMLNode(this.lightboxMedia)
         const newMediaElement = this.getPreviousMedia().cloneNode(true)
-        lightboxMediaDOM.appendChild(newMediaElement)    
+        this.lightboxMedia.appendChild(newMediaElement)
+        this.currentNodeIndex = this.getPreviousNodeIndex()
     }
 
     getCardParentNode () {
@@ -81,7 +81,7 @@ export class LightboxFactory {
 
     /***PREVIOUS */
     getPreviousNodeIndex () {
-        const currentIndex = this.getCurrentNodeIndex()
+        const currentIndex = this.currentNodeIndex
         const previousNodeIndex = currentIndex > 0 ? currentIndex - 1 : this.getCardsNodes().length - 1
         return previousNodeIndex
     }
@@ -95,12 +95,10 @@ export class LightboxFactory {
 
     /*** NEXT */
     getNextNodeIndex () {
-        const currentIndex = this.getCurrentNodeIndex()
+        const currentIndex = this.currentNodeIndex
         const nextNodeIndex = currentIndex < this.getCardsNodes().length - 1 ? currentIndex + 1 : 0
         return nextNodeIndex
     }
-
-
 
     getNextMedia(){
         const nextIndex = this.getNextNodeIndex()
