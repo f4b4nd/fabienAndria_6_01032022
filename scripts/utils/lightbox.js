@@ -1,9 +1,16 @@
 import clearHTMLNode from "./clearHTMLNode.js"
 
-export function displayLightbox (mediaElement) {
-    const lightbox = new LightboxFactory(mediaElement)
+export function displayLightbox (mediaElement, data) {
+    const lightbox = new LightboxFactory(mediaElement, data)
     lightbox.displayLightbox()
     lightbox.setLightboxMedia()
+    //lightbox.getCardsDOM()
+    const c = lightbox.getCurrentNodeIndex()
+    const p = lightbox.getPreviousNodeIndex()
+    const n = lightbox.getNextNodeIndex()
+    const pm = lightbox.getPreviousMedia()
+    console.log('#p', p, '#c', c, '#n', n)
+    console.log('pm', pm)
 }
 
 function closeLightbox () {
@@ -19,9 +26,10 @@ closeLightBoxBtn.addEventListener('click', closeLightbox)
 
 export class LightboxFactory {
 
-    constructor(mediaElement) {
-        this.mediaElement = mediaElement.srcElement.cloneNode(true)
+    constructor(mediaElement, data) {
+        this.mediaElement = mediaElement.srcElement
         this.lightbox = document.querySelector('#lightbox')
+        this.data = data
     }
 
     displayLightbox () {    
@@ -29,11 +37,60 @@ export class LightboxFactory {
     }
 
     setLightboxMedia() {
-    
         const lightboxMediaDOM = this.lightbox.querySelector('.lightbox__media')
         clearHTMLNode(lightboxMediaDOM)
-    
-        lightboxMediaDOM.appendChild(this.mediaElement)
-
+        const newMediaElement = this.mediaElement.cloneNode(true)
+        lightboxMediaDOM.appendChild(newMediaElement)
     }
+
+    setLightboxNextMedia() {
+        const lightboxMediaDOM = this.lightbox.querySelector('.lightbox__media')
+        clearHTMLNode(lightboxMediaDOM)
+        const newMediaElement = this.getNextMedia.cloneNode(true)
+        lightboxMediaDOM.appendChild(newMediaElement)    
+    }
+
+    getCardParentNode () {
+        const parentDOM = this.mediaElement.closest('.card')
+        return parentDOM
+    }
+
+    getCardsNodes() {
+        const nodes = this.getCardParentNode().closest('.cards').querySelectorAll('.card')
+        console.log('nodes', nodes)
+        return nodes
+    }
+
+    getCurrentNodeIndex() {
+        const nodes = this.getCardsNodes()
+        const currentNodeIndex = Array.from(nodes).findIndex(node => node === this.getCardParentNode())
+        return currentNodeIndex
+    }
+
+    getPreviousNodeIndex () {
+        const currentIndex = this.getCurrentNodeIndex()
+        const previousNodeIndex = currentIndex > 0 ? currentIndex - 1 : this.getCardsNodes().length - 1
+        return previousNodeIndex
+    }
+
+    getNextNodeIndex () {
+        const currentIndex = this.getCurrentNodeIndex()
+        const nextNodeIndex = currentIndex < this.getCardsNodes().length - 1 ? currentIndex + 1 : 0
+        return nextNodeIndex
+    }
+
+    getPreviousMedia(){
+        const previousIndex = this.getPreviousNodeIndex()
+        const previousNode = this.getCardsNodes().item(previousIndex)
+        const previousMedia = previousNode.querySelector('img, video')
+        return previousMedia
+    }
+
+    getNextMedia(){
+        const nextIndex = this.getNextNodeIndex()
+        const nextNode = this.getCardsNodes().item(nextIndex)
+        const nextMedia = nextNode.querySelector('img, video')
+        return nextMedia
+    }
+    
 }
