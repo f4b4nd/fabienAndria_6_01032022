@@ -21,8 +21,8 @@ export default class AbstractFactory {
             elementDOM.onclick = function () { callback() }
         }
 
-        if (elementSchema.eventListener) {
-            elementDOM.addEventListener('click',  (elementDOM) => elementSchema.eventListener(elementDOM))
+        if (elementSchema.clickEventListener) {
+            elementDOM.addEventListener('click',  (elementDOM) => elementSchema.clickEventListener(elementDOM))
         }
 
         return elementDOM

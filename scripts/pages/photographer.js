@@ -48,8 +48,7 @@ export function displayMediaDatas (mediaDatas) {
 
 }
 
-//const likes = document.querySelectorAll('.card__body__likes-counter')
-//likes[0].addEventListener('change', () => {console.log('changé')})
+
 
 function displayPopupData (metaData, mediaDatas) {
 
@@ -75,3 +74,11 @@ async function init () {
 }
 
 init()
+
+/*
+const likes = document.querySelectorAll('.card__body__likes-counter')
+if (likes.length > 0) {
+    console.log('l', likes)
+    likes[0].addEventListener('change', () => {console.log('changé')})
+}
+*/

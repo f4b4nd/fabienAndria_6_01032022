@@ -4,7 +4,7 @@ export default class PhotographerPopupFactory extends AbstractFactory {
 
     constructor (totalLikes, price) {
         super()
-        this.totalLikes = totalLikes
+        this.totalLikesCounter = totalLikes
         this.price = `${price}€ / jour`
     }
 
@@ -25,7 +25,7 @@ export default class PhotographerPopupFactory extends AbstractFactory {
                 tagHTML: 'p',
                 parent: '.popup__likes-wrapper',
                 classnames: ['popup__total-likes-counter'],
-                text: this.totalLikes
+                text: this.totalLikesCounter,
             },
             likesIcon: {
                 tagHTML: 'div',
@@ -42,5 +42,6 @@ export default class PhotographerPopupFactory extends AbstractFactory {
 
         return this.getHierarchizedElementDOM(photographerPopupSchema)
     }
+
 }
 

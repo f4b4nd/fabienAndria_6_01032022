@@ -56,13 +56,13 @@ export default class PhotographerMediasFactory extends AbstractFactory {
                 tagHTML: 'span',
                 parent: '.card__body__likes-wrapper',
                 classnames: ['card__body__likes-counter'],
-                text: this.likesCounter
+                text: this.likesCounter,
             },
             likesIcon: {
                 tagHTML: 'span',
                 parent: '.card__body__likes-wrapper',
                 classnames: ['card__body__likes-icon', 'fa-solid', 'fa-heart'],
-                eventListener: (elementDOM) => this.updateLikesCounter(elementDOM)
+                clickEventListener: (elementDOM) => this.updateLikesCounter(elementDOM)
             }
         }
 
@@ -98,6 +98,18 @@ export default class PhotographerMediasFactory extends AbstractFactory {
 
         counterDOM.textContent = this.likesCounter
 
+        this.updateTotalLikesCounter()
+    }
+
+    updateTotalLikesCounter () {
+
+        const totalLikes = document.querySelectorAll('.card__body__likes-counter')
+        const totalLikesCounter = [...totalLikes].reduce((acc, current) => {
+            return acc + parseInt(current.textContent)
+        }, 0)
+
+        const sectionDOM = document.querySelector('.popup__total-likes-counter')
+        sectionDOM.textContent = totalLikesCounter
     }
 }
 
