@@ -10,10 +10,9 @@ closeLightBoxBtn.addEventListener('click', closeLightbox)
 
 
 export function displayLightbox (mediaElement) {
-    const lightbox = new LightboxFactory(mediaElement)
+    const lightbox = new LightboxFactory(mediaElement.srcElement)
     lightbox.displayLightbox()
-    lightbox.setMedia(mediaElement.srcElement)
-    lightbox.setTitle()
+    lightbox.setLightbox()
 
     /**PREVIOUS */
     const lightboxPrevious = document.querySelector('.lightbox__previous')
@@ -26,11 +25,12 @@ export function displayLightbox (mediaElement) {
 
 export class LightboxFactory {
 
-    constructor(mediaElement) {
-        this.mediaElement = mediaElement.srcElement
+    constructor(media) {
+        this.media = media
+        this.title = this.getTitle()
         this.lightbox = document.querySelector('#lightbox')
         this.lightboxMedia = this.lightbox.querySelector('.lightbox__media')
-        this.currentNodeIndex = this.getCurrentNodeIndex()
+        this.currentNodeIndex = this.getInitialNodeIndex()
     }
 
     displayLightbox () {    
@@ -38,71 +38,80 @@ export class LightboxFactory {
     }
 
     /**SETTERS */
-    setMedia(mediaElement) {
-        clearHTMLNode(this.lightboxMedia)
-        const newMediaElement = mediaElement.cloneNode(true)
-        this.lightboxMedia.appendChild(newMediaElement)
+    setMedia () {
+        this.media = this.getMedia()
     }
 
     setTitle () {
+        this.title = this.getTitle()
+    }
+
+    setLightbox () {
+        this.setLightboxMedia()
+        this.setLightboxTitle()
+    }
+
+    setLightboxMedia () {
+        clearHTMLNode(this.lightboxMedia)
+        const newMedia = this.media.cloneNode(true)
+        this.lightboxMedia.appendChild(newMedia)
+    }
+
+    setLightboxTitle () {
         const lightboxTitle = this.lightbox.querySelector('.lightbox__title')
-        lightboxTitle.textContent = this.getTitle()
+        lightboxTitle.textContent = this.title
     }
 
-    setPreviousLightbox() {
+    setPreviousLightbox () {
         this.currentNodeIndex = this.getPreviousNodeIndex()
-        const media = this.getMedia()
-        this.setMedia(media)
-        this.setTitle()
+        this.setMedia()
+        this.setLightbox()
     }
 
-    setNextLightbox() {
+    setNextLightbox () {
         this.currentNodeIndex = this.getNextNodeIndex()
-        const media = this.getMedia()
-        this.setMedia(media)
-        this.setTitle()
+        this.setMedia()
+        this.setLightbox()
     }
 
     /***GETTERS*/
-    getCardParentNode () {
-        const parentDOM = this.mediaElement.closest('.card')
+    getCurrentNode () {
+        const parentDOM = this.media.closest('.card')
         return parentDOM
     }
 
-    getCardsNodes() {
-        const nodes = this.getCardParentNode().closest('.cards').querySelectorAll('.card')
+    getAllNodes () {
+        const nodes = this.getCurrentNode().closest('.cards').querySelectorAll('.card')
         return nodes
     }
 
-    getTitle() {
-        const currentNode = this.getCardsNodes().item(this.currentNodeIndex)
-        const title = currentNode.querySelector('.card__body__title').textContent
-        return title
-    }
-
     getMedia () {
-        const currentNode = this.getCardsNodes().item(this.currentNodeIndex)
+        const currentNode = this.getAllNodes().item(this.currentNodeIndex)
         const media = currentNode.querySelector('img, video')
         return media
     }
 
+    getTitle () {
+        const currentNode = this.getAllNodes().item(this.currentNodeIndex)
+        const title = currentNode.querySelector('.card__body__title').textContent
+        return title
+    }
+
     /***INDEXES */
-    getCurrentNodeIndex() {
-        const nodes = this.getCardsNodes()
-        const currentNodeIndex = Array.from(nodes).findIndex(node => node === this.getCardParentNode())
-        return currentNodeIndex
+    getInitialNodeIndex () {
+        const nodes = this.getAllNodes()
+        const currentIndex = Array.from(nodes).findIndex(node => node === this.getCurrentNode())
+        return currentIndex
     }
 
     getPreviousNodeIndex () {
-        const currentIndex = this.currentNodeIndex
-        const previousNodeIndex = currentIndex > 0 ? currentIndex - 1 : this.getCardsNodes().length - 1
-        return previousNodeIndex
+        const previousIndex = this.currentNodeIndex > 0 ? this.currentNodeIndex - 1 : this.getAllNodes().length - 1
+        return previousIndex
     }
 
     getNextNodeIndex () {
-        const currentIndex = this.currentNodeIndex
-        const nextNodeIndex = currentIndex < this.getCardsNodes().length - 1 ? currentIndex + 1 : 0
-        return nextNodeIndex
+        const nextIndex = this.currentNodeIndex < this.getAllNodes().length - 1 ? this.currentNodeIndex + 1 : 0
+        return nextIndex
     }
     
 }
