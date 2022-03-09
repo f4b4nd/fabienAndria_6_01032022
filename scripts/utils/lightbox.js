@@ -11,6 +11,10 @@ export function displayLightbox (mediaElement, data) {
     const pm = lightbox.getPreviousMedia()
     console.log('#p', p, '#c', c, '#n', n)
     console.log('pm', pm)
+    const lightboxPrevious = document.querySelector('.lightbox__previous')
+    const lightboxNext = document.querySelector('.lightbox__next')
+    lightboxPrevious.addEventListener('click', () => lightbox.setLightboxPreviousMedia())
+    lightboxNext.addEventListener('click', () => lightbox.setLightboxNextMedia())
 }
 
 function closeLightbox () {
@@ -23,6 +27,8 @@ function closeLightbox () {
 const closeLightBoxBtn = document.querySelector('#lightbox .close-btn')
 closeLightBoxBtn.addEventListener('click', closeLightbox)
 
+
+const lightboxNext = document.querySelector('.lightbox__next')
 
 export class LightboxFactory {
 
@@ -46,7 +52,14 @@ export class LightboxFactory {
     setLightboxNextMedia() {
         const lightboxMediaDOM = this.lightbox.querySelector('.lightbox__media')
         clearHTMLNode(lightboxMediaDOM)
-        const newMediaElement = this.getNextMedia.cloneNode(true)
+        const newMediaElement = this.getNextMedia().cloneNode(true)
+        lightboxMediaDOM.appendChild(newMediaElement)    
+    }
+
+    setLightboxPreviousMedia() {
+        const lightboxMediaDOM = this.lightbox.querySelector('.lightbox__media')
+        clearHTMLNode(lightboxMediaDOM)
+        const newMediaElement = this.getPreviousMedia().cloneNode(true)
         lightboxMediaDOM.appendChild(newMediaElement)    
     }
 
@@ -57,7 +70,6 @@ export class LightboxFactory {
 
     getCardsNodes() {
         const nodes = this.getCardParentNode().closest('.cards').querySelectorAll('.card')
-        console.log('nodes', nodes)
         return nodes
     }
 
