@@ -1,3 +1,6 @@
+import { getData } from "../utils/fetch.js" 
+import { PhotographerFactory } from "../factories/photographer.js"
+ 
 
 async function getPhotographers() {
 
