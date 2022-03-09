@@ -6,10 +6,10 @@ export class PhotographerFactory extends AbstractFactory {
     constructor (data) {
         super()
         this.data = data
-        this.urlPhotographer = `photographer.html?id=${this.data.id}`
-        this.imageSource = `assets/photographers/${this.data.portrait}`
-        this.location = `${this.data.city}, ${this.data.country}`
-        this.price = `${this.data.price}€/jour`
+        this.urlPhotographer = `photographer.html?id=${data.id}`
+        this.imageSource = `assets/photographers/${data.portrait}`
+        this.location = `${data.city}, ${data.country}`
+        this.price = `${data.price}€/jour`
     }
 
     getUserCardDOM () {

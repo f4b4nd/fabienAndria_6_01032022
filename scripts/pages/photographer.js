@@ -1,6 +1,6 @@
 import { getData } from "../utils/fetch.js"
 import { PhotographerFactory } from "../factories/photographer.js"
-import { photographerMediasFactory } from "../factories/media.js"
+import { PhotographerMediasFactory } from "../factories/media.js"
 
 function getPhotographerID () {
     const urlQueryString = window.location.search
@@ -39,19 +39,11 @@ async function displayMediaDatas (mediaDatas) {
 
     const section = document.querySelector(".photograph__media .cards")
 
-    const photographerModel = photographerMediasFactory()
 
     mediaDatas.forEach((mediaData) => {
-
-        if (mediaData.image) {
-            const mediaCardDOM = photographerModel.getImageMediaCardDOM(mediaData)
-            section.appendChild(mediaCardDOM)
-        }
-        else if (mediaData.video) {
-            const mediaCardDOM = photographerModel.getVideoMediaCardDOM(mediaData)
-            section.appendChild(mediaCardDOM)
-        }
-        
+        const model = new PhotographerMediasFactory(mediaData)
+        const mediaCardDOM = model.getMediaCardDOM()
+        section.appendChild(mediaCardDOM)        
     })
 
 }

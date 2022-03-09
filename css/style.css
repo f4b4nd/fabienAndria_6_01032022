@@ -42,9 +42,7 @@ h1 {
     height: 2.5em;
 }
 
-.photographer_section article img, 
-.photograph__meta__portrait img,
-.photograph__media img {
+.card img, .photograph__meta__portrait img {
     width: 100%;
     height: 100%;
     object-fit: cover;
