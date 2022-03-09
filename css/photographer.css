@@ -84,10 +84,12 @@
     align-items: center;
     font-size: 1.2em;
     font-weight: bold;
+    overflow: hidden;
 }
 
 .photograph__popup .popup__likes-wrapper {
+    flex-basis: 25%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
 }

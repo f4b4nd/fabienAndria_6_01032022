@@ -61,7 +61,7 @@ export default class PhotographerMediasFactory extends AbstractFactory {
             likesIcon: {
                 tagHTML: 'span',
                 parent: '.card__body__likes-wrapper',
-                classnames: ['card__body__likes-icon', 'fa-solid', 'fa-heart'],
+                classnames: ['card__body__likes-icon', 'fa-regular', 'fa-heart'],
                 clickEventListener: (elementDOM) => this.updateLikesCounter(elementDOM)
             }
         }
@@ -95,10 +95,23 @@ export default class PhotographerMediasFactory extends AbstractFactory {
         
         const increment = (this.likesCounter === this.data.likes) ? 1 : 0
         this.likesCounter = this.data.likes + increment
-
         counterDOM.textContent = this.likesCounter
 
+
+        this.updateLikesIconClass(iconDOM)
         this.updateTotalLikesCounter()
+    }
+
+    updateLikesIconClass (iconDOM) {
+
+        if (iconDOM.classList.contains('fa-solid')) {
+            iconDOM.classList.remove('fa-solid')
+            iconDOM.classList.add('fa-regular')
+        }
+        else {
+            iconDOM.classList.remove('fa-regular')
+            iconDOM.classList.add('fa-solid')        
+        }
     }
 
     updateTotalLikesCounter () {

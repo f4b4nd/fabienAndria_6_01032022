@@ -24,12 +24,12 @@ export async function getPhotographerData () {
 
 function displayMetaData (metaData) {
 
-    const textSection = document.querySelector(".photograph__meta__text")
-    const portraitSection = document.querySelector('.photograph__meta__portrait')
-
     const model = new PhotographerFactory(metaData)
     const userCardMetaDOM = model.getUserMetaCardDOM()
     const userPortraitDOM = model.getUserPortraitDOM()
+
+    const textSection = document.querySelector(".photograph__meta__text")
+    const portraitSection = document.querySelector('.photograph__meta__portrait')
 
     textSection.appendChild(userCardMetaDOM)
     portraitSection.appendChild(userPortraitDOM)
@@ -49,17 +49,16 @@ export function displayMediaDatas (mediaDatas) {
 }
 
 
-
 function displayPopupData (metaData, mediaDatas) {
-
-    const section = document.querySelector(".photograph__popup")
 
     const totalLikes = Object.values(mediaDatas).reduce((acc, current) => acc + current.likes, 0)
     const price = metaData.price
 
     const model = new PhotographerPopupFactory(totalLikes, price)
     const popupDOM = model.getPhotographerPopupDOM()
-    section.appendChild(popupDOM)
+
+    const sectionDOM = document.querySelector(".photograph__popup")
+    sectionDOM.appendChild(popupDOM)
 
 }
 
@@ -74,11 +73,3 @@ async function init () {
 }
 
 init()
-
-/*
-const likes = document.querySelectorAll('.card__body__likes-counter')
-if (likes.length > 0) {
-    console.log('l', likes)
-    likes[0].addEventListener('change', () => {console.log('changé')})
-}
-*/
