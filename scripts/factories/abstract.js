@@ -16,6 +16,15 @@ export default class AbstractFactory {
             elementDOM.textContent = elementSchema.text
         }
 
+        if (elementSchema.onclick) {
+            const callback = elementSchema.onclick
+            elementDOM.onclick = function () { callback() }
+        }
+
+        if (elementSchema.eventListener) {
+            elementDOM.addEventListener('click',  (elementDOM) => elementSchema.eventListener(elementDOM))
+        }
+
         return elementDOM
 
     }

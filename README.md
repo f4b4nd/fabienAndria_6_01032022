@@ -1,4 +1,4 @@
-# Projet 6 : Créez un site accessible pour une plateforme de photographes
+# Projet 6
 
 ## Lien du site 
 Le projet est mis en ligne à l'URL suivante : 

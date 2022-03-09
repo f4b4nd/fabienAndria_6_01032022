@@ -1,5 +1,4 @@
 import AbstractFactory from "./abstract.js"
-import { displayLightbox, closeLightbox } from "../utils/lightbox.js"
 
 export class PhotographerFactory extends AbstractFactory {
 

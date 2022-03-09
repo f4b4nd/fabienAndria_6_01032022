@@ -1,10 +1,12 @@
 import AbstractFactory from "./abstract.js"
+import { displayLightbox } from "../utils/lightbox.js"
 
 export class PhotographerMediasFactory extends AbstractFactory {
 
     constructor(data) {
         super()
         this.data = data
+        this.likesCounter = data.likes
         this.mediaSource = `assets/media/${data.image ? data.image : data.video}`
     }
 
@@ -36,7 +38,8 @@ export class PhotographerMediasFactory extends AbstractFactory {
                 classnames: ['card__media__content'],
                 attributes: {
                     src: this.mediaSource
-                }
+                },
+                onclick: () => displayLightbox()
             },
             title: {
                 tagHTML: 'p',
@@ -52,12 +55,14 @@ export class PhotographerMediasFactory extends AbstractFactory {
             likesCounter: {
                 tagHTML: 'span',
                 parent: '.card__body__likes-wrapper',
-                classnames: ['card__body__likes-counter']
+                classnames: ['card__body__likes-counter'],
+                text: this.likesCounter
             },
             likesIcon: {
                 tagHTML: 'span',
                 parent: '.card__body__likes-wrapper',
-                classnames: ['card__body__likes-icon', 'fa-solid', 'fa-heart']
+                classnames: ['card__body__likes-icon', 'fa-solid', 'fa-heart'],
+                eventListener: (elementDOM) => this.updateLikesCounter(elementDOM)
             }
         }
 
@@ -80,6 +85,21 @@ export class PhotographerMediasFactory extends AbstractFactory {
         VideoMediaCardSchema.media.attributes['controls'] = 'controls'
 
         return VideoMediaCardSchema
+    }
+
+    updateLikesCounter (elementDOM) {
+
+        const iconElement = elementDOM.srcElement
+        const likesParent = iconElement.closest('.card__body__likes-wrapper')
+        const likesCounter = likesParent.querySelector('.card__body__likes-counter')
+        
+        if (this.likesCounter === this.data.likes)  this.likesCounter++ 
+        else { 
+            this.likesCounter = this.data.likes 
+        }
+        
+        likesCounter.textContent = this.likesCounter
+
     }
 }
 

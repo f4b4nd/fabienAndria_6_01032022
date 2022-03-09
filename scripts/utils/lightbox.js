@@ -1,12 +1,15 @@
-export function closeLightbox () {
+export function displayLightbox () {
+    const lightbox = document.querySelector('#lightbox')
+
+    lightbox.style.display = 'block'
+}
+
+function closeLightbox () {
     
     const lightbox = document.querySelector('#lightbox')
 
     lightbox.style.display = 'none'
 }
 
-export function displayLightbox () {
-    const lightbox = document.querySelector('#lightbox')
-
-    lightbox.style.display = 'block'
-}
+const closeLightBoxBtn = document.querySelector('#lightbox .close-btn')
+closeLightBoxBtn.addEventListener('click', closeLightbox)
