@@ -1,4 +1,4 @@
-.photographer_section .card {
+.photographer__section .card {
     height: 20vw;
     flex-basis: 28%;
     min-width: 300px;
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.photographer_section .card__header {
+.photographer__section .card__header {
     height: 75%;
     text-decoration : none;
 
@@ -19,7 +19,7 @@
     align-items: center;
 }
 
-.photographer_section .card__header__image {
+.photographer__section .card__header__image {
     height: 85%;
     width: 45%;
     min-height: 200px;
@@ -28,7 +28,7 @@
     overflow: hidden;
 }
 
-.photographer_section .card__header__title {
+.photographer__section .card__header__title {
     color: var(--indian-red);
     font-size: 1.5em;
     margin: 0;
@@ -38,7 +38,7 @@
 /************/
 
 
-.photographer_section .card__body {
+.photographer__section .card__body {
     height: 25%;
 
     display: flex;
@@ -47,16 +47,16 @@
     justify-content: space-evenly;
 }
 
-.photographer_section .card__body__location {
+.photographer__section .card__body__location {
     color: var(--indian-red);
     font-size: 1.1em;
 }
 
-.photographer_section .card__body__tagline {
+.photographer__section .card__body__tagline {
     font-size: 0.9em;
 }
 
-.photographer_section .card__body__price {
+.photographer__section .card__body__price {
     font-size: 0.9em;
     color: var(--grey);
 }

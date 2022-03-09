@@ -1,5 +1,5 @@
-import { getData } from "../utils/fetch.js" 
-import { PhotographerFactory } from "../factories/photographer.js"
+import getData from "../utils/fetch.js" 
+import PhotographerFactory from "../factories/photographer.js"
  
 
 async function getPhotographers() {
@@ -9,9 +9,9 @@ async function getPhotographers() {
 
 }
 
-async function displayData(photographers) {
+function displayData(photographers) {
 
-    const sectionDOM = document.querySelector(".photographer_section")
+    const sectionDOM = document.querySelector(".photographer__section")
 
     photographers.forEach((photographerData) => {
         const model = new PhotographerFactory(photographerData)

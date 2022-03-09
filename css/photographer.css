@@ -86,6 +86,8 @@
     font-weight: bold;
 }
 
-.photograph__popup .fa-heart {
-    color: black;
+.photograph__popup .popup__likes-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

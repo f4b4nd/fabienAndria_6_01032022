@@ -1,6 +1,6 @@
 import AbstractFactory from "./abstract.js"
 
-export class PhotographerFactory extends AbstractFactory {
+export default class PhotographerFactory extends AbstractFactory {
 
     constructor (data) {
         super()
@@ -120,38 +120,5 @@ export class PhotographerFactory extends AbstractFactory {
         return this.getHierarchizedElementDOM(userPortraitSchema)
 
     }
-
-}
-
-
-
-function photographerPopupFactory () {
-
-    function getLikeInfoPopup (price, totalLikes) {
-
-        const popupElement = document.createElement('div')
-        const likesElement = document.createElement('span')
-        const likesCounterElement = document.createElement('span')
-        const likesIconElement = document.createElement('span')
-        const priceElement = document.createElement('span')
-
-        popupElement.classList.add('popup')
-        likesElement.classList.add('wrapper-likes')
-        likesCounterElement.classList.add('likes-counter')
-        likesIconElement.classList.add('fa-solid', 'fa-heart')
-        priceElement.classList.add('wrapper-price')
-
-        popupElement.appendChild(likesElement)
-        likesElement.appendChild(likesCounterElement)
-        likesElement.appendChild(likesIconElement)
-        popupElement.appendChild(priceElement)
-
-        likesCounterElement.textContent = totalLikes
-        priceElement.textContent = `${price}€ / jour`
-
-        return popupElement
-    }
-
-    return { getLikeInfoPopup }
 
 }

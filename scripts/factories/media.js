@@ -1,7 +1,7 @@
 import AbstractFactory from "./abstract.js"
 import { displayLightbox } from "../utils/lightbox.js"
 
-export class PhotographerMediasFactory extends AbstractFactory {
+export default class PhotographerMediasFactory extends AbstractFactory {
 
     constructor(data) {
         super()
@@ -89,14 +89,15 @@ export class PhotographerMediasFactory extends AbstractFactory {
 
     updateLikesCounter (elementDOM) {
 
-        const iconElement = elementDOM.srcElement
-        const likesParent = iconElement.closest('.card__body__likes-wrapper')
-        const likesCounter = likesParent.querySelector('.card__body__likes-counter')
+        const iconDOM = elementDOM.srcElement
+        const parentDOM = iconDOM.closest('.card__body__likes-wrapper')
+        const counterDOM = parentDOM.querySelector('.card__body__likes-counter')
         
         const increment = (this.likesCounter === this.data.likes) ? 1 : 0
         this.likesCounter = this.data.likes + increment
 
-        likesCounter.textContent = this.likesCounter
+        counterDOM.textContent = this.likesCounter
 
     }
 }
+

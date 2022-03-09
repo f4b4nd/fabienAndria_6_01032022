@@ -1,6 +1,7 @@
-import { getData } from "../utils/fetch.js"
-import { PhotographerFactory } from "../factories/photographer.js"
-import { PhotographerMediasFactory } from "../factories/media.js"
+import getData from "../utils/fetch.js"
+import PhotographerFactory  from "../factories/photographer.js"
+import PhotographerMediasFactory from "../factories/media.js"
+import PhotographerPopupFactory from "../factories/popup.js"
 
 function getPhotographerID () {
     const urlQueryString = window.location.search
@@ -21,21 +22,21 @@ export async function getPhotographerData () {
     return { metaData, mediaDatas }
 }
 
-async function displayMetaData (metaData) {
+function displayMetaData (metaData) {
 
-    const metaTextSection = document.querySelector(".photograph__meta__text")
-    const metaPortraitSection = document.querySelector('.photograph__meta__portrait')
+    const textSection = document.querySelector(".photograph__meta__text")
+    const portraitSection = document.querySelector('.photograph__meta__portrait')
 
     const model = new PhotographerFactory(metaData)
     const userCardMetaDOM = model.getUserMetaCardDOM()
     const userPortraitDOM = model.getUserPortraitDOM()
 
-    metaTextSection.appendChild(userCardMetaDOM)
-    metaPortraitSection.appendChild(userPortraitDOM)
+    textSection.appendChild(userCardMetaDOM)
+    portraitSection.appendChild(userPortraitDOM)
 
 }
 
-export async function displayMediaDatas (mediaDatas) {
+export function displayMediaDatas (mediaDatas) {
 
     const section = document.querySelector(".photograph__media .cards")
 
@@ -47,28 +48,28 @@ export async function displayMediaDatas (mediaDatas) {
 
 }
 
-async function displayUserPopup (metaData, mediaDatas) {
+//const likes = document.querySelectorAll('.card__body__likes-counter')
+//likes[0].addEventListener('change', () => {console.log('changé')})
+
+function displayPopupData (metaData, mediaDatas) {
 
     const section = document.querySelector(".photograph__popup")
-    const totalLikes = Object.values(mediaDatas).reduce((acc, current) => acc + current.likes, 0)
-    console.log('total', totalLikes)
 
+    const totalLikes = Object.values(mediaDatas).reduce((acc, current) => acc + current.likes, 0)
     const price = metaData.price
 
-    const model = photographerPopupFactory()
-
-    const popupDOM = model.getLikeInfoPopup(price, totalLikes)
+    const model = new PhotographerPopupFactory(totalLikes, price)
+    const popupDOM = model.getPhotographerPopupDOM()
     section.appendChild(popupDOM)
 
 }
-
 
 
 async function init () {
     const { metaData, mediaDatas } = await getPhotographerData()
     displayMetaData(metaData)
     displayMediaDatas(mediaDatas)
-    displayUserPopup (metaData, mediaDatas)
+    displayPopupData (metaData, mediaDatas)
     console.log('meta', metaData)
     console.log('media', mediaDatas)
 }
