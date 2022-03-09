@@ -9,7 +9,7 @@ function getPhotographerID () {
     return photographerID
 }
 
-async function getPhotographerData () {
+export async function getPhotographerData () {
 
     const photographerID = getPhotographerID()
     const data = await getData()
@@ -35,10 +35,9 @@ async function displayMetaData (metaData) {
 
 }
 
-async function displayMediaDatas (mediaDatas) {
+export async function displayMediaDatas (mediaDatas) {
 
     const section = document.querySelector(".photograph__media .cards")
-
 
     mediaDatas.forEach((mediaData) => {
         const model = new PhotographerMediasFactory(mediaData)
@@ -63,41 +62,7 @@ async function displayUserPopup (metaData, mediaDatas) {
 
 }
 
-function compareStringDates(a, b) {
-    return new Date(b) - new Date(a)
-}
 
-async function orderMediaDatas(value) {
-
-    clearMediaData ()
-
-    const { mediaDatas } = await getPhotographerData()
-
-    switch (value) {
-        case 'popularity':
-            mediaDatas.sort((a, b) => b.likes - a.likes)
-            break
-
-        case 'date':
-            mediaDatas.sort((a, b) => compareStringDates(a.date, b.date))
-            break
-            
-        case 'title':
-            mediaDatas.sort((a, b) => a.title.localeCompare(b.title))
-            break
-    }
-    
-    displayMediaDatas(mediaDatas)
-
-}
-
-function clearMediaData () {
-    const section = document.querySelector(".photograph__media .cards")
-
-    while (section.firstChild) {
-        section.removeChild(section.lastChild)
-    }
-}
 
 async function init () {
     const { metaData, mediaDatas } = await getPhotographerData()

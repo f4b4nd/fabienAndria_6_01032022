@@ -53,5 +53,4 @@ export default class AbstractFactory {
         return hierarchizedElementDOM
     }
 
-
 }
