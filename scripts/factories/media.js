@@ -39,7 +39,7 @@ export default class PhotographerMediasFactory extends AbstractFactory {
                 attributes: {
                     src: this.mediaSource
                 },
-                onclick: () => displayLightbox()
+                clickEventListener: (elementDOM) => displayLightbox(elementDOM)
             },
             title: {
                 tagHTML: 'p',

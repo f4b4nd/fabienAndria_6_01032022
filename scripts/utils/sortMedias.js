@@ -1,4 +1,5 @@
 import { getPhotographerData, displayMediaDatas } from "../pages/photographer.js"
+import clearHTMLNode from "./clearHTMLNode.js"
 
 const dropdownOrderby = document.querySelector('#dropdown-orderby')
 
@@ -32,7 +33,8 @@ function handleDropdownClick () {
 
 async function sortMediaDatas(value) {
 
-    clearMediaData ()
+    const section = document.querySelector(".photograph__media .cards")
+    clearHTMLNode (section)
 
     const { mediaDatas } = await getPhotographerData()
 
@@ -54,13 +56,7 @@ async function sortMediaDatas(value) {
 
 }
 
-function clearMediaData () {
-    const section = document.querySelector(".photograph__media .cards")
 
-    while (section.firstChild) {
-        section.removeChild(section.lastChild)
-    }
-}
 
 function compareStringDates(a, b) {
     return new Date(b) - new Date(a)
