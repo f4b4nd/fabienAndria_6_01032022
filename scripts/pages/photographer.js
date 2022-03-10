@@ -4,6 +4,7 @@ import MediasFactory from "../factory/media.js"
 import LikesCounterPopupFactory from "../factory/likesCounterPopup.js"
 import DropdownFactory from "../factory/dropdown.js"
 
+
 function getPhotographerID () {
     const urlQueryString = window.location.search
     const urlParams = new URLSearchParams(urlQueryString)
@@ -68,15 +69,12 @@ export function getDropdown () {
     new DropdownFactory(dropdown, 0)
 } 
 
-
 async function init () {
     const { metaData, mediaDatas } = await getPhotographerData()
     displayMetaData(metaData)
     displayMediaDatas(mediaDatas)
     displayLikesCounterPopupData (metaData, mediaDatas)
     getDropdown()
-    console.log('meta', metaData)
-    console.log('media', mediaDatas)
 }
 
 init()

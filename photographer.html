@@ -22,7 +22,7 @@
         <div class="photograph__meta__text">
           <!-- META DATA -->
         </div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button contact-me-btn" onclick="getModal()">Contactez-moi</button>
         <div class="photograph__meta__portrait">
           <!-- META DATA : Portrait -->
         </div>
@@ -74,9 +74,9 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img class="close-btn" src="assets/icons/close.svg"  />
         </header>
-        <h3 class="modal__photograph-name"> Mimi </h3>
+        <h3 class="modal__photograph-name"> </h3>
 				<form>
 					<div>
 						<label form="firstname">Prénom</label>
@@ -88,12 +88,11 @@
             <label for="message" >Votre message</label>
 						<input id="message" />
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button submit-btn" >Envoyer</button>
 				</form>
 			</div>
 		</div>
     <script src="./scripts/pages/photographer.js"  type="module"></script>
-    <script src="./scripts/utils/lightbox.js"  type="module"></script>
     <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>
