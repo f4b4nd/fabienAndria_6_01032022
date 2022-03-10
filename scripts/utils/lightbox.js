@@ -65,26 +65,18 @@ export class LightboxFactory {
     setPreviousLightbox () {
         this.currentNodeIndex = this.getPreviousNodeIndex()
         this.setMedia()
+        this.setTitle()
         this.setLightbox()
     }
 
     setNextLightbox () {
         this.currentNodeIndex = this.getNextNodeIndex()
         this.setMedia()
+        this.setTitle()
         this.setLightbox()
     }
 
     /***GETTERS*/
-    getCurrentNode () {
-        const parentDOM = this.media.closest('.card')
-        return parentDOM
-    }
-
-    getAllNodes () {
-        const nodes = this.getCurrentNode().closest('.cards').querySelectorAll('.card')
-        return nodes
-    }
-
     getMedia () {
         const currentNode = this.getAllNodes().item(this.currentNodeIndex)
         const media = currentNode.querySelector('img, video')
@@ -100,8 +92,8 @@ export class LightboxFactory {
     /***INDEXES */
     getInitialNodeIndex () {
         const nodes = this.getAllNodes()
-        const currentIndex = Array.from(nodes).findIndex(node => node === this.getCurrentNode())
-        return currentIndex
+        const initialNodeIndex = Array.from(nodes).findIndex(node => node === this.getInitialNode())
+        return initialNodeIndex
     }
 
     getPreviousNodeIndex () {
@@ -114,4 +106,15 @@ export class LightboxFactory {
         return nextIndex
     }
     
+    /**NODE GETTER **/
+    getInitialNode () {
+        const initialNode = this.media.closest('.card')
+        return initialNode
+    }
+
+    getAllNodes () {
+        const nodes = this.getInitialNode().closest('.cards').querySelectorAll('.card')
+        return nodes
+    }
+
 }
