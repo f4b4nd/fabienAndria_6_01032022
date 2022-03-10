@@ -19,7 +19,6 @@ class ModalFactory {
     constructor (modal) {
         this.modal = modal
         this.form = this.modal.querySelector('form')
-        this.closeBtn = this.modal.querySelector('.close-btn')
     }
 
     displayModal () {

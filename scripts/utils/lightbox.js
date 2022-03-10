@@ -18,13 +18,22 @@ export function getLightbox (mediaElement) {
     /**PREVIOUS BUTTON */
     const previousLightboxBtn = document.querySelector('.lightbox__previous')
     previousLightboxBtn.addEventListener('click', () => lightbox.setPreviousLightbox())
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft')  lightbox.setPreviousLightbox()
+    })
 
     /**NEXT BUTTON */
     const nextLightboxBtn = document.querySelector('.lightbox__next')
     nextLightboxBtn.addEventListener('click', () => lightbox.setNextLightbox())
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight')  lightbox.setNextLightbox()
+    })
 
     /** CLOSE BUTTON */
     const closeLightBoxBtn = document.querySelector('#lightbox .close-btn')
     closeLightBoxBtn.addEventListener('click', () => lightbox.closeLightbox())
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape')   lightbox.closeLightbox()
+    })
 
 }
