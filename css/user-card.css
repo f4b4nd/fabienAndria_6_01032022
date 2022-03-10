@@ -1,8 +1,8 @@
 .photographer__section .card {
     height: 20vw;
     flex-basis: 28%;
-    min-width: 300px;
-    min-height: 300px;
+    min-width: 350px;
+    min-height: 350px;
     
     display: flex;
     flex-direction: column;
@@ -22,8 +22,8 @@
 .photographer__section .card__header__image {
     height: 85%;
     width: 45%;
-    min-height: 200px;
-    min-width: 200px;
+    min-height: 230px;
+    min-width: 230px;
     border-radius : 50%;
     overflow: hidden;
 }

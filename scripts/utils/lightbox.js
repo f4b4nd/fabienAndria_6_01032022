@@ -19,7 +19,6 @@ export function getLightbox (mediaElement) {
     const previousLightboxBtn = document.querySelector('.lightbox__previous')
     previousLightboxBtn.addEventListener('click', () => lightbox.setPreviousLightbox())
     document.addEventListener('keydown', (e) => {
-        e.preventDefault()
         if (e.key === 'ArrowLeft')  lightbox.setPreviousLightbox()
     })
 
@@ -27,7 +26,6 @@ export function getLightbox (mediaElement) {
     const nextLightboxBtn = document.querySelector('.lightbox__next')
     nextLightboxBtn.addEventListener('click', () => lightbox.setNextLightbox())
     document.addEventListener('keydown', (e) => {
-        e.preventDefault()
         if (e.key === 'ArrowRight')  lightbox.setNextLightbox()
     })
 
@@ -35,14 +33,15 @@ export function getLightbox (mediaElement) {
     const closeLightBoxBtn = document.querySelector('#lightbox .close-btn')
     closeLightBoxBtn.addEventListener('click', () => lightbox.closeLightbox())
     document.addEventListener('keydown', (e) => {
-        e.preventDefault()
         if (e.key === 'Escape')   lightbox.closeLightbox()
     })
 
 
     /** PAUSE ON VIDEO */
     document.addEventListener('keydown', (e) => {
-        e.preventDefault()
-        if (e.code === 'Space') lightbox.setVideoOnPause()
-    })
+        if (e.code === 'Space') {
+            e.preventDefault()
+            lightbox.setVideoOnPause()
+        }
+    })  
 }
