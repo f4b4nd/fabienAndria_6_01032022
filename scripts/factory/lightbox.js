@@ -2,12 +2,14 @@ import clearHTMLNode from "../utils/clearHTMLNode.js"
 
 export default class LightboxFactory {
 
-    constructor(media) {
+    constructor(media, currentNodeIndex, nodes) {
         this.media = media
+        this.currentNodeIndex = currentNodeIndex
+        this.nodes = nodes
         this.title = this.getTitle()
         this.lightbox = document.querySelector('#lightbox')
         this.lightboxMedia = this.lightbox.querySelector('.lightbox__media')
-        this.currentNodeIndex = this.getInitialNodeIndex()
+        this.lightboxTitle = this.lightbox.querySelector('.lightbox__title')
     }
 
     displayLightbox () {    
@@ -38,9 +40,8 @@ export default class LightboxFactory {
         this.lightboxMedia.appendChild(newMedia)
     }
 
-    setLightboxTitle () {
-        const lightboxTitle = this.lightbox.querySelector('.lightbox__title')
-        lightboxTitle.textContent = this.title
+    setLightboxTitle () {        
+        this.lightboxTitle.textContent = this.title
     }
 
     setPreviousLightbox () {
@@ -59,43 +60,26 @@ export default class LightboxFactory {
 
     /***GETTERS*/
     getMedia () {
-        const currentNode = this.getAllNodes().item(this.currentNodeIndex)
+        const currentNode = this.nodes.item(this.currentNodeIndex)
         const media = currentNode.querySelector('img, video')
         return media
     }
 
     getTitle () {
-        const currentNode = this.getAllNodes().item(this.currentNodeIndex)
+        const currentNode = this.nodes.item(this.currentNodeIndex)
         const title = currentNode.querySelector('.card__body__title').textContent
         return title
     }
 
     /***INDEXES */
-    getInitialNodeIndex () {
-        const nodes = this.getAllNodes()
-        const initialNodeIndex = Array.from(nodes).findIndex(node => node === this.getInitialNode())
-        return initialNodeIndex
-    }
-
     getPreviousNodeIndex () {
-        const previousIndex = this.currentNodeIndex > 0 ? this.currentNodeIndex - 1 : this.getAllNodes().length - 1
+        const previousIndex = this.currentNodeIndex > 0 ? this.currentNodeIndex - 1 : this.nodes.length - 1
         return previousIndex
     }
 
     getNextNodeIndex () {
-        const nextIndex = this.currentNodeIndex < this.getAllNodes().length - 1 ? this.currentNodeIndex + 1 : 0
+        const nextIndex = this.currentNodeIndex < this.nodes.length - 1 ? this.currentNodeIndex + 1 : 0
         return nextIndex
-    }
-    
-    /**NODE GETTER **/
-    getInitialNode () {
-        const initialNode = this.media.closest('.card')
-        return initialNode
-    }
-
-    getAllNodes () {
-        const nodes = this.getInitialNode().closest('.cards').querySelectorAll('.card')
-        return nodes
     }
 
 }

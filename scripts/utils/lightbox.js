@@ -3,19 +3,27 @@ import LightboxFactory from "../factory/lightbox.js"
 
 export function getLightbox (mediaElement) {
 
-    const lightbox = new LightboxFactory(mediaElement.srcElement)
+    /** GETTING LIGHTBOX ARGUMENTS */
+    const media = mediaElement.srcElement
+
+    const currentNode = media.closest('.card')
+    const nodes = currentNode.closest('.cards').querySelectorAll('.card')
+    const currentNodeIndex = Array.from(nodes).findIndex(node => node === currentNode)
+
+    /*** USING lIGHTBOX */
+    const lightbox = new LightboxFactory(media, currentNodeIndex, nodes)
     lightbox.displayLightbox()
     lightbox.setLightbox()
 
-    /**PREVIOUS */
+    /**PREVIOUS BUTTON */
     const previousLightboxBtn = document.querySelector('.lightbox__previous')
     previousLightboxBtn.addEventListener('click', () => lightbox.setPreviousLightbox())
 
-    /**NEXT */
+    /**NEXT BUTTON */
     const nextLightboxBtn = document.querySelector('.lightbox__next')
     nextLightboxBtn.addEventListener('click', () => lightbox.setNextLightbox())
 
-    /** CLOSE */
+    /** CLOSE BUTTON */
     const closeLightBoxBtn = document.querySelector('#lightbox .close-btn')
     closeLightBoxBtn.addEventListener('click', () => lightbox.closeLightbox())
 

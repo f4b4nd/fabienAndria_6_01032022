@@ -1,5 +1,5 @@
 import getData from "../utils/fetch.js" 
-import UserFactory from "../components/user.js"
+import UserFactory from "../factory/user.js"
  
 
 async function getPhotographers() {

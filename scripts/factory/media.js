@@ -62,7 +62,7 @@ export default class MediasFactory extends AbstractFactory {
                 tagHTML: 'span',
                 parent: '.card__body__likes-wrapper',
                 classnames: ['card__body__likes-icon', 'fa-regular', 'fa-heart'],
-                clickEventListener: (elementDOM) => this.updateLikes(elementDOM)
+                clickEventListener: (elementDOM) => this.updateLikesDOM(elementDOM)
             }
         }
 
@@ -87,23 +87,23 @@ export default class MediasFactory extends AbstractFactory {
         return VideoCardSchema
     }
 
-    updateLikes (elementDOM) {
+    updateLikesDOM (elementDOM) {
         const likesIconDOM = elementDOM.srcElement
         const likesWrapperDOM = likesIconDOM.closest('.card__body__likes-wrapper')
         const likesCounterDOM = likesWrapperDOM.querySelector('.card__body__likes-counter')
 
-        this.updateLikesCounter(likesCounterDOM)
-        this.updateLikesIconClass(likesIconDOM)
-        this.updateTotalLikesCounter()
+        this.updateLikesCounterDOM(likesCounterDOM)
+        this.updateLikesIconDOM(likesIconDOM)
+        this.updateTotalLikesCounterDOM()
     }
 
-    updateLikesCounter (likesCounterDOM) {        
+    updateLikesCounterDOM (likesCounterDOM) {        
         const increment = (this.likesCounter === this.data.likes) ? 1 : 0
         this.likesCounter = this.data.likes + increment
         likesCounterDOM.textContent = this.likesCounter
     }
 
-    updateLikesIconClass (likesIconDOM) {
+    updateLikesIconDOM (likesIconDOM) {
 
         if (likesIconDOM.classList.contains('fa-solid')) {
             likesIconDOM.classList.remove('fa-solid')
@@ -115,7 +115,7 @@ export default class MediasFactory extends AbstractFactory {
         }
     }
 
-    updateTotalLikesCounter () {
+    updateTotalLikesCounterDOM () {
 
         const totalLikes = document.querySelectorAll('.card__body__likes-counter')
         const totalLikesCounter = [...totalLikes].reduce((acc, current) => {
