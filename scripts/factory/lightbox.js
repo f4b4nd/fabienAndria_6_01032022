@@ -58,6 +58,12 @@ export default class LightboxFactory {
         this.setLightbox()
     }
 
+    setVideoOnPause () {
+        const video = this.lightboxMedia.querySelector('video')
+        if (!video)  return
+        video.paused ? video.play() : video.pause()
+    }
+
     /***GETTERS*/
     getMedia () {
         const currentNode = this.nodes.item(this.currentNodeIndex)
