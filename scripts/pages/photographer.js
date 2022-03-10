@@ -2,7 +2,7 @@ import getData from "../utils/fetch.js"
 import UserFactory  from "../factory/user.js"
 import MediasFactory from "../factory/media.js"
 import LikesCounterPopupFactory from "../factory/likesCounterPopup.js"
-import { getDropdown } from "../utils/sortMedias.js"
+import DropdownFactory from "../factory/dropdown.js"
 
 function getPhotographerID () {
     const urlQueryString = window.location.search
@@ -62,6 +62,11 @@ function displayLikesCounterPopupData (metaData, mediaDatas) {
     section.appendChild(likesCounterPopup)
 
 }
+
+export function getDropdown () {
+    const dropdown = document.querySelector('#dropdown-selector')
+    new DropdownFactory(dropdown, 0)
+} 
 
 
 async function init () {

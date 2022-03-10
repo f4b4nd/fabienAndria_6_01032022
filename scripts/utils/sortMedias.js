@@ -1,14 +1,5 @@
 import { getPhotographerData, displayMediaDatas } from "../pages/photographer.js"
-import DropdownFactory from "../factory/dropdown.js"
 import clearHTMLNode from "./clearHTMLNode.js"
-
-
-export function getDropdown () {
-
-    const dropdown = document.querySelector('#dropdown-selector')
-    new DropdownFactory(dropdown, 0)
-
-} 
 
 
 export async function sortMediaDatas(value) {
