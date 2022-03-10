@@ -1,5 +1,5 @@
 import AbstractFactory from "./abstract.js"
-import { displayLightbox } from "../utils/lightbox.js"
+import { getLightbox } from "../utils/lightbox.js"
 
 export default class MediasFactory extends AbstractFactory {
 
@@ -39,7 +39,7 @@ export default class MediasFactory extends AbstractFactory {
                 attributes: {
                     src: this.mediaSource
                 },
-                clickEventListener: (elementDOM) => displayLightbox(elementDOM)
+                clickEventListener: (elementDOM) => getLightbox(elementDOM)
             },
             title: {
                 tagHTML: 'p',

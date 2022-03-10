@@ -1,7 +1,7 @@
 import getData from "../utils/fetch.js"
-import UserFactory  from "../components/user.js"
-import MediasFactory from "../components/media.js"
-import LikesCounterPopupFactory from "../components/popup.js"
+import UserFactory  from "../factory/user.js"
+import MediasFactory from "../factory/media.js"
+import LikesCounterPopupFactory from "../factory/popup.js"
 
 function getPhotographerID () {
     const urlQueryString = window.location.search
