@@ -12,13 +12,13 @@ export default class DropdownFactory {
     }
 
     setCurrentOption (newIndex) {
-        
+
         if (this.currentOptionIndex === newIndex)   return
 
         this.hideOption(this.currentOptionIndex)
         this.displayOption(newIndex)
 
-        const optionID = this.options.item(newIndex)
+        const optionID = this.options.item(newIndex).id
         sortMediaDatas(optionID)
 
         this.currentOptionIndex = newIndex

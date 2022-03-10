@@ -22,17 +22,23 @@
     margin: 0 100px;
 }
 
-.photograph__media .photograph__sort-medias {
+.photograph__media__sort {
     margin : 2em 0;
     font-weight: bold;
     display: flex;
     flex-direction: row;
     height: 50px;
-    border: 1px solid black;
 }
 
-.photograph__media .photograph__sort-medias {
+
+.photograph__media__sort {
     position: relative;
+    max-width: 300px;
+}
+
+.photograph__media__sort-label {
+    font-size: 1.5em;
+    line-height: 50px;
 }
 
 .photograph__media .cards {
