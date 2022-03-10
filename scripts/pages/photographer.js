@@ -2,6 +2,7 @@ import getData from "../utils/fetch.js"
 import UserFactory  from "../factory/user.js"
 import MediasFactory from "../factory/media.js"
 import LikesCounterPopupFactory from "../factory/likesCounterPopup.js"
+import { getDropdown } from "../utils/sortMedias.js"
 
 function getPhotographerID () {
     const urlQueryString = window.location.search
@@ -68,6 +69,7 @@ async function init () {
     displayMetaData(metaData)
     displayMediaDatas(mediaDatas)
     displayLikesCounterPopupData (metaData, mediaDatas)
+    getDropdown()
     console.log('meta', metaData)
     console.log('media', mediaDatas)
 }

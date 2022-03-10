@@ -3,10 +3,8 @@ import UserFactory from "../factory/user.js"
  
 
 async function getPhotographers() {
-
     const data = await getData()
     return { photographers: data.photographers }
-
 }
 
 function displayData(photographers) {
@@ -22,10 +20,8 @@ function displayData(photographers) {
 }
 
 async function init() {
-
     const { photographers } = await getPhotographers()
     displayData(photographers)
-
 }
 
 init()

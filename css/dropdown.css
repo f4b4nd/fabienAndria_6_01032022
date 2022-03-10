@@ -1,12 +1,12 @@
 /* DROPDOWN**/
 
-ul#dropdown-orderby {
+ul#dropdown-selector {
     position: absolute;
     top: 0;
     left: 200px;
 }
 
-ul#dropdown-orderby {
+ul#dropdown-selector {
 
     min-height: 50px;
     width: 130px;
@@ -20,24 +20,31 @@ ul#dropdown-orderby {
     border-radius: 10px;
     border: none;
     cursor:  none;
+    z-index: 5;
 
 }
 
-
-#dropdown-orderby.active li {
-    display: flex;
-}
-
-#dropdown-orderby li.active {
-    display: flex;
-}
-
-#dropdown-orderby li:first-child:not(.active) {
-    display: flex;
-}
-
-#dropdown-orderby li {
+ul#dropdown-selector:not(.active) li:not(.active) {
     display: none;
+}
+
+ul#dropdown-selector.active li {
+    display: flex;
+}
+
+ul#dropdown-selector li.active {
+    display: flex;
+}
+
+ul#dropdown-selector:not(.active) .fa-chevron-down {
+    display: none;
+}
+
+ul#dropdown-selector.active .fa-chevron-up {
+    display: none;
+}
+
+ul#dropdown-selector li {
     margin: 0;
     padding: 0;
     height: 50px;
@@ -48,11 +55,11 @@ ul#dropdown-orderby {
     align-items: center;
 }
 
-#dropdown-orderby li .fa-chevron-down {
+ul#dropdown-selector li .fa-chevron-down {
     margin-left: 10px;
 }
 
-#dropdown-orderby li .text {
+ul#dropdown-selector li .text {
     flex: 1;
     display: flex;
     align-items: center;
@@ -60,7 +67,8 @@ ul#dropdown-orderby {
     width: 100%;
 }
 
-#dropdown-orderby.active li:not(:last-child)::after {
+
+ul#dropdown-selector.active li:not(:last-child)::after {
     content: '';
     width: 100%;
     height: 1px;
@@ -69,3 +77,4 @@ ul#dropdown-orderby {
     margin-top: auto;
     border-bottom: 1px solid white;
 }
+
