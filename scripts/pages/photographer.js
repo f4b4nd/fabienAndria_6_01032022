@@ -1,7 +1,7 @@
 import getData from "../utils/fetch.js"
 import UserFactory  from "../factory/user.js"
 import MediasFactory from "../factory/media.js"
-import LikesCounterPopupFactory from "../factory/popup.js"
+import LikesCounterPopupFactory from "../factory/likesCounterPopup.js"
 
 function getPhotographerID () {
     const urlQueryString = window.location.search
@@ -49,7 +49,7 @@ export function displayMediaDatas (mediaDatas) {
 }
 
 
-function displayPopupData (metaData, mediaDatas) {
+function displayLikesCounterPopupData (metaData, mediaDatas) {
 
     const totalLikes = Object.values(mediaDatas).reduce((acc, current) => acc + current.likes, 0)
     const price = metaData.price
@@ -67,7 +67,7 @@ async function init () {
     const { metaData, mediaDatas } = await getPhotographerData()
     displayMetaData(metaData)
     displayMediaDatas(mediaDatas)
-    displayPopupData (metaData, mediaDatas)
+    displayLikesCounterPopupData (metaData, mediaDatas)
     console.log('meta', metaData)
     console.log('media', mediaDatas)
 }

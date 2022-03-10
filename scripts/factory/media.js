@@ -11,7 +11,7 @@ export default class MediasFactory extends AbstractFactory {
     }
 
     getMediaCardComponent () {
-        const mediaCardSchema = this.data.image ? this.getImageMediaCardSchema() : this.getVideoMediaCardSchema()
+        const mediaCardSchema = this.data.image ? this.getImageCardSchema() : this.getVideoCardSchema()
         return this.getHierarchizedComponent(mediaCardSchema)
     }
 
@@ -62,55 +62,56 @@ export default class MediasFactory extends AbstractFactory {
                 tagHTML: 'span',
                 parent: '.card__body__likes-wrapper',
                 classnames: ['card__body__likes-icon', 'fa-regular', 'fa-heart'],
-                clickEventListener: (elementDOM) => this.updateLikesCounter(elementDOM)
+                clickEventListener: (elementDOM) => this.updateLikes(elementDOM)
             }
         }
 
         return mediaCardSchema
     }
 
-    getImageMediaCardSchema () {
-        const ImageMediaCardSchema = this.getMediaCardSchema()
-        ImageMediaCardSchema.media.tagHTML = 'img'
-        ImageMediaCardSchema.media.classnames.push('card__media__image')
-        ImageMediaCardSchema.media.attributes['alt'] = this.data.title
+    getImageCardSchema () {
+        const ImageCardSchema = this.getMediaCardSchema()
+        ImageCardSchema.media.tagHTML = 'img'
+        ImageCardSchema.media.classnames.push('card__media__image')
+        ImageCardSchema.media.attributes['alt'] = this.data.title
 
-        return ImageMediaCardSchema
+        return ImageCardSchema
     }
 
-    getVideoMediaCardSchema () {
-        const VideoMediaCardSchema = this.getMediaCardSchema()
-        VideoMediaCardSchema.media.tagHTML = 'video'
-        VideoMediaCardSchema.media.classnames.push('card__media__video')
-        VideoMediaCardSchema.media.attributes['controls'] = 'controls'
+    getVideoCardSchema () {
+        const VideoCardSchema = this.getMediaCardSchema()
+        VideoCardSchema.media.tagHTML = 'video'
+        VideoCardSchema.media.classnames.push('card__media__video')
+        VideoCardSchema.media.attributes['controls'] = 'controls'
 
-        return VideoMediaCardSchema
+        return VideoCardSchema
     }
 
-    updateLikesCounter (elementDOM) {
+    updateLikes (elementDOM) {
+        const likesIconDOM = elementDOM.srcElement
+        const likesWrapperDOM = likesIconDOM.closest('.card__body__likes-wrapper')
+        const likesCounterDOM = likesWrapperDOM.querySelector('.card__body__likes-counter')
 
-        const iconDOM = elementDOM.srcElement
-        const parentDOM = iconDOM.closest('.card__body__likes-wrapper')
-        const counterDOM = parentDOM.querySelector('.card__body__likes-counter')
-        
-        const increment = (this.likesCounter === this.data.likes) ? 1 : 0
-        this.likesCounter = this.data.likes + increment
-        counterDOM.textContent = this.likesCounter
-
-
-        this.updateLikesIconClass(iconDOM)
+        this.updateLikesCounter(likesCounterDOM)
+        this.updateLikesIconClass(likesIconDOM)
         this.updateTotalLikesCounter()
     }
 
-    updateLikesIconClass (iconDOM) {
+    updateLikesCounter (likesCounterDOM) {        
+        const increment = (this.likesCounter === this.data.likes) ? 1 : 0
+        this.likesCounter = this.data.likes + increment
+        likesCounterDOM.textContent = this.likesCounter
+    }
 
-        if (iconDOM.classList.contains('fa-solid')) {
-            iconDOM.classList.remove('fa-solid')
-            iconDOM.classList.add('fa-regular')
+    updateLikesIconClass (likesIconDOM) {
+
+        if (likesIconDOM.classList.contains('fa-solid')) {
+            likesIconDOM.classList.remove('fa-solid')
+            likesIconDOM.classList.add('fa-regular')
         }
         else {
-            iconDOM.classList.remove('fa-regular')
-            iconDOM.classList.add('fa-solid')        
+            likesIconDOM.classList.remove('fa-regular')
+            likesIconDOM.classList.add('fa-solid')        
         }
     }
 
