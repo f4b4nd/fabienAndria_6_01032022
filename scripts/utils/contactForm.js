@@ -39,15 +39,16 @@ class ModalFactory {
         return name.textContent
     }
 
-    getInputValues() {
+    getInputDatas() {
         const inputs = this.form.querySelectorAll('input')
-        const inputValues = Array.from(inputs).map(input => `${input.id} : ${input.value}`)
-        console.log('values', inputValues)
+        const datas = [...inputs].map(input => `${input.id}: "${input.value || null}"`)
+        return datas
     }
 
     submitForm (e) {
         e.preventDefault()
-        this.getInputValues()
+        const inputDatas = this.getInputDatas()
+        console.log('your data here --> ', inputDatas.join(' ; '))
         this.closeModal()
         this.form.reset()
     }

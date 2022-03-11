@@ -26,19 +26,15 @@ export default class DropdownFactory {
     }
 
     hideOption (idx) {
-        this.options[idx].classList.remove('active')  
+        this.options[idx].classList.remove('active')
     }
 
     displayOption (idx) {
-        this.options[idx].classList.add('active')  
+        this.options[idx].classList.add('active')
     }
 
     openDropdownOptions () {
-        if (this.dropdown.classList.contains('active')) {
-            this.dropdown.classList.remove('active')
-        } else {
-            this.dropdown.classList.add('active')
-        }     
+        this.dropdown.classList.contains('active') ? this.dropdown.classList.remove('active') : this.dropdown.classList.add('active')
     }
 
     setDropdownEventListener () {
@@ -46,7 +42,7 @@ export default class DropdownFactory {
     }
 
     setOptionsEventListeners () {
-        Array.from(this.options).forEach((option, optionIndex) => {
+        [...this.options].forEach((option, optionIndex) => {
            option.addEventListener('click', () => this.setCurrentOption(optionIndex))
         })
     }

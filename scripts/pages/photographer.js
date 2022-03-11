@@ -1,8 +1,11 @@
 import getData from "../utils/fetch.js"
+
 import UserFactory  from "../factory/user.js"
 import MediasFactory from "../factory/media.js"
 import LikesCounterPopupFactory from "../factory/likesCounterPopup.js"
 import DropdownFactory from "../factory/dropdown.js"
+
+import { redirectToHomepage, currentURLIsValid } from "../utils/redirect.js"
 
 
 function getPhotographerID () {
@@ -70,7 +73,14 @@ export function getDropdown () {
 } 
 
 async function init () {
+
     const { metaData, mediaDatas } = await getPhotographerData()
+
+    if (mediaDatas.length === 0 || metaData.length === 0 || !currentURLIsValid()) {
+        redirectToHomepage()
+        return
+    }
+
     displayMetaData(metaData)
     displayMediaDatas(mediaDatas)
     displayLikesCounterPopupData (metaData, mediaDatas)

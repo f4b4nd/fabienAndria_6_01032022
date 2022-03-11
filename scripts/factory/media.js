@@ -84,6 +84,7 @@ export default class MediasFactory extends AbstractFactory {
         VideoCardSchema.media.classnames.push('card__media__video')
         VideoCardSchema.media.attributes['controls'] = 'controls'
         VideoCardSchema.media.attributes['type'] = 'video/mp4'
+        VideoCardSchema.media.attributes['title'] = this.data.title
 
         return VideoCardSchema
     }

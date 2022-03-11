@@ -8,7 +8,7 @@ export function getLightbox (mediaElement) {
 
     const currentNode = media.closest('.card')
     const nodes = currentNode.closest('.cards').querySelectorAll('.card')
-    const currentNodeIndex = Array.from(nodes).findIndex(node => node === currentNode)
+    const currentNodeIndex = [...nodes].findIndex(node => node === currentNode)
 
     /*** USING lIGHTBOX */
     const lightbox = new LightboxFactory(media, currentNodeIndex, nodes)
@@ -36,12 +36,12 @@ export function getLightbox (mediaElement) {
         if (e.key === 'Escape')   lightbox.closeLightbox()
     })
 
-
     /** PAUSE ON VIDEO */
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Space') {
             e.preventDefault()
             lightbox.setVideoOnPause()
         }
-    })  
+    })
+
 }
