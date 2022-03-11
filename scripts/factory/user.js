@@ -85,7 +85,7 @@ export default class UserFactory extends AbstractFactory {
                 tagHTML: 'h1',                
                 parent: '.card',
                 classnames: ['card__title'],
-                text: this.data.name
+                text: this.data.name,
             },
             location : {
                 tagHTML: 'p',

@@ -73,7 +73,9 @@ export function getDropdown () {
 } 
 
 async function init () {
-
+     
+    var d =   []
+    
     const { metaData, mediaDatas } = await getPhotographerData()
 
     if (mediaDatas.length === 0 || metaData.length === 0 || !currentURLIsValid()) {
