@@ -1,0 +1,32 @@
+
+.photograph__popup {
+    position: fixed;
+    bottom:0;
+    right: 2em;
+    background-color: var(--light-coral);
+    height: 3.5em;
+    width: 16em;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 1em;
+}
+
+.photograph__popup .popup {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.photograph__popup .popup__likes-wrapper {
+    flex-basis: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -2,14 +2,13 @@
     background-color: var(--ghost-white);
     min-height: 300px;
     margin: 0 100px;
-    padding: 0 3em;
+    padding: 0 2em;
     row-gap: 1em;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
-
 
 
 .photograph__media {
@@ -38,11 +37,12 @@
 .photograph__media .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     row-gap: 2em;
+    column-gap: 1em;
 }
 
-/**prevents article:last-child to stick to right because of space-between */
+/**prevents article:last-child to stick to right because of space-evenly (works with space-between) */
 .photograph__media .cards::after {
     content: "";
     flex: 0 0 28%;
@@ -68,34 +68,30 @@
 
 /***/
 
-.photograph__popup {
-    position: fixed;
-    bottom:0;
-    right: 2em;
-    background-color: var(--light-coral);
-    height: 3.5em;
-    width: 16em;
 
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    display: flex;
-    align-items: center;
-    padding: 0 1em;
-}
+@media screen and (max-width: 992px) {
 
-.photograph__popup .popup {
-    flex: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    overflow: hidden;
-}
+    .photograph-header {
+        margin: 0 1em;
+        padding: 1em;
 
-.photograph__popup .popup__likes-wrapper {
-    flex-basis: 25%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        row-gap: 2em;
+    }
+
+    .photograph__media {
+        margin: 0 0.5em;
+    }
+
+    .photograph__media__sort {
+        margin-left: 2em;
+    }
+
+    .photograph__media .cards {
+        justify-content: center;
+    }
+
 }

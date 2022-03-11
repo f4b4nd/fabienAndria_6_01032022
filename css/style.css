@@ -6,14 +6,24 @@
 @import url("modal.css");
 @import url("lightbox.css");
 @import url("dropdown.css");
+@import url("total-likes-popup.css");
 
 :root {
+
+    /* COLORS */
     --ghost-white: #FAFAFA;
     --light-coral: #DB8876;
     --indian-red: #D3573C;
     --brown : #901C1C;
     --grey: #757575;
     --dark-grey : #312E2E;
+
+    /* BREAKPOINTS */
+    --lg-minwidth : 992px;
+    --md-maxwidth : var(--lg-minwidth) - 1px;
+    --md-minwidth : 768px;
+    --sm-maxwidth : var(--md-minwidth) - 1px;
+
 }
 
 body {
