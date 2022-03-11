@@ -1,0 +1,17 @@
+.photograph__meta__text .card__title {
+    color: var(--indian-red);
+    font-size: 2em;
+}
+
+.photograph__meta__text .card__location {
+    color: var(--brown);
+    font-weight: bold;
+}
+
+
+.photograph__meta__image {
+    width : 200px;
+    height: 200px;
+    border-radius : 50%;
+    overflow: hidden;
+}

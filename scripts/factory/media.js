@@ -66,6 +66,9 @@ export default class MediasFactory extends AbstractFactory {
                 tagHTML: 'i',
                 parent: '.card__body__likes-wrapper',
                 classnames: ['card__body__likes-icon', 'fa-regular', 'fa-heart'],
+                attributes: {
+                    'aria-label': 'likes',
+                },
                 clickEventListener: (elementDOM) => this.updateLikesDOM(elementDOM)
             }
         }

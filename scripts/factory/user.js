@@ -52,13 +52,13 @@ export default class UserFactory extends AbstractFactory {
                 classnames: ['card__body'],
             },
             location : {
-                tagHTML: 'div',
+                tagHTML: 'p',
                 parent: '.card__body',
                 classnames: ['card__body__location'],
                 text: this.location,
             },
             tagline : {
-                tagHTML: 'div',
+                tagHTML: 'p',
                 parent: '.card__body',
                 classnames: ['card__body__tagline'],
                 text: this.data.tagline, 

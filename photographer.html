@@ -75,33 +75,33 @@
       
     </div>
     <div id="lightbox">
-      <div class="lightbox__content"> 
-        <button class="close-btn" role="button" title="Close Lightbox"> X </button>
-        <a class="lightbox__previous" role="button" title="previous image"> <i class="fa-solid fa-chevron-left"></i> </a>
-        <div class="lightbox__media"></div>
-        <a class="lightbox__next" role="button" title="bext image"> <i class="fa-solid fa-chevron-right"></i> </a>
+      <div class="lightbox__content" aria-label="image closeup view"> 
+        <button class="close-btn" role="button" aria-label="Close Dialog"> X </button>
+        <a class="lightbox__previous" role="button" aria-label="previous image"> <i class="fa-solid fa-chevron-left"></i> </a>
+        <div class="lightbox__media"><!-- MEDIA GOES HERE --></div>
+        <a class="lightbox__next" role="button" aria-label="Next image"> <i class="fa-solid fa-chevron-right"></i> </a>
       </div>
-      <div class="lightbox__title">  </div>
+      <p class="lightbox__title"> <!-- TITLE GOES HERE --> </p>
     </div>
-    <div id="contact_modal">
+    <div id="contact_modal" aria-label="Modal de contact" >
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img class="close-btn" src="assets/icons/close.svg"  />
+          <img class="close-btn" src="./assets/icons/close.svg"  />
         </header>
         <h3 class="modal__photograph-name"> </h3>
 				<form>
 					<div>
 						<label form="firstname">Prénom</label>
-						<input id="firstname" />
+						<input id="firstname" aria-label="firstname" >
             <label for="lastname" >Nom</label>
-						<input id="lastname" />
+						<input id="lastname" aria-label="lastname" />
             <label form="email" >Email</label>
-						<input id="email" />
+						<input id="email" aria-label="email" />
             <label for="message" >Votre message</label>
-						<input id="message" />
+						<input id="message" aria-label="Your message" />
 					</div>
-          <button class="contact_button submit-btn" type="submit">Envoyer</button>
+          <button class="contact_button submit-btn" type="submit" aria-label="Send" >Envoyer</button>
 				</form>
 			</div>
 		</div>

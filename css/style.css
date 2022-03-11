@@ -1,6 +1,7 @@
 @import url("index.css");
 @import url("photographer.css");
 @import url("user-card.css");
+@import url("profile-card.css");
 @import url("media-card.css");
 @import url("modal.css");
 @import url("lightbox.css");
@@ -43,18 +44,15 @@ h1 {
 }
 
 .card img, 
-.photograph__meta__image img,
-.lightbox__media img {
+.photograph__meta__image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.photograph__media video,
-.lightbox__media video {
+.photograph__media video {
     width: 100%;
     height: 100%;
     object-fit: fill;
 }
-
 

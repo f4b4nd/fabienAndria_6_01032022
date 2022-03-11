@@ -10,12 +10,6 @@
     align-items: center;
 }
 
-.photograph__meta__image {
-    width : 200px;
-    height: 200px;
-    border-radius : 50%;
-    overflow: hidden;
-}
 
 
 .photograph__media {
@@ -67,6 +61,10 @@
     cursor: pointer;
 }
 
+.contact_button:hover, .contact_button:focus  {
+    background-color: var(--light-coral);
+    color: black;
+}
 
 /***/
 
