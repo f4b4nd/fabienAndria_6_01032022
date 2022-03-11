@@ -6,17 +6,19 @@ export default class DropdownFactory {
     constructor (dropdown, currentOptionIndex) {
         this.dropdown = dropdown
         this.currentOptionIndex = currentOptionIndex
+        this.optionsWrapper = this.dropdown.querySelector('ul')
         this.options = this.dropdown.querySelectorAll('li')
         this.setDropdownEventListener()
         this.setOptionsEventListeners()
     }
 
+    getOptionID () {}
     setCurrentOption (newIndex) {
 
         if (this.currentOptionIndex === newIndex)   return
 
-        this.hideOption(this.currentOptionIndex)
-        this.displayOption(newIndex)
+        this.unsetOption(this.currentOptionIndex)
+        this.setOption(newIndex)
 
         const optionID = this.options.item(newIndex).id
         sortMediaDatas(optionID)
@@ -25,16 +27,22 @@ export default class DropdownFactory {
 
     }
 
-    hideOption (idx) {
+    unsetOption (idx) {
         this.options[idx].classList.remove('active')
     }
 
-    displayOption (idx) {
+    setOption (idx) {
+        const optionID = this.options.item(idx).id
+        this.optionsWrapper.setAttribute('aria-activedescendant', optionID)
         this.options[idx].classList.add('active')
     }
 
     openDropdownOptions () {
-        this.dropdown.classList.contains('active') ? this.dropdown.classList.remove('active') : this.dropdown.classList.add('active')
+        if (this.dropdown.classList.contains('active')) {
+            this.dropdown.classList.remove('active')
+            return
+        }
+        this.dropdown.classList.add('active')
     }
 
     setDropdownEventListener () {

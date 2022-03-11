@@ -31,27 +31,40 @@
       <div class="photograph__media">
 
         <div class="photograph__media__sort">
-          <span class="photograph__media__sort-label"> Trier par </span>
-          <ul id="dropdown-selector"> 
-            <li id="popularity" class="active"> 
+          <span id="sort-by" class="photograph__media__sort-label"> Trier par </span>
+          <button id="dropdown-selector" 
+            role="button"
+            aria-haspopup="listbox" 
+            aria-expanded="false" 
+            aria-labelledby="sort-by"
+          >
+            <ul 
+              id="dropdown-selector__options" 
+              role="listbox"
+              aria-labelledby="sort-by"
+              aria-activedescendant="" 
+              aria-selected="true" 
+            > 
+              <li id="popularity" data-value="popularity" class="active" role="option"> 
+                  <span class="row">
+                    <span class="text"> Popularité </span>
+                    <span class="icon"> <i class="fas fa-chevron-down"></i> <i class="fas fa-chevron-up"></i> </i> </span> 
+                  </span>
+              </li>
+              <li id="date" data-value="date" role="option" > 
                 <span class="row">
-                  <span class="text"> Popularité </span>
-                  <span class="icon"> <i class="fas fa-chevron-down"></i> <i class="fas fa-chevron-up"></i> </i> </span> 
+                  <span class="text"> Date </span>
+                  <span class="icon"> <i class="fas fa-chevron-down"></i>  </span>
                 </span>
-            </li>
-            <li id="date"> 
-              <span class="row">
-                <span class="text"> Date </span>
-                <span class="icon"> <i class="fas fa-chevron-down"></i>  </span>
-              </span>
-            </li>
-            <li id="title"> 
-              <span class="row">
-                <span class="text"> Titre </span>      
-                <span class="icon"> <i class="fas fa-chevron-down"></i> </span> 
-              </span>
-            </li>
-          </ul>
+              </li>
+              <li id="title" data-value="title" role="option"> 
+                <span class="row">
+                  <span class="text"> Titre </span>      
+                  <span class="icon"> <i class="fas fa-chevron-down"></i> </span> 
+                </span>
+              </li>
+            </ul>
+          </button>
         </div>
 
         <div class="cards">  <!-- MEDIA DATA --> </div>

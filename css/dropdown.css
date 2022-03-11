@@ -1,11 +1,11 @@
 /* DROPDOWN**/
-ul#dropdown-selector {
+#dropdown-selector {
     position: absolute;
     top: 0;
     right: 0;
 }
 
-ul#dropdown-selector {
+#dropdown-selector {
 
     min-height: 50px;
     width: 180px;
@@ -21,57 +21,62 @@ ul#dropdown-selector {
     cursor:  none;
 }
 
+#dropdown-selector ul {
+    padding: 0;
+    margin: 0;
+}
+
 /**HANDLE ACTIVE OPTIONS */
-ul#dropdown-selector.active {
+#dropdown-selector.active {
     z-index: 1;
 }
 
-ul#dropdown-selector:not(.active) li:not(.active) {
+#dropdown-selector:not(.active) li:not(.active) {
     display: none;
 }
 
-ul#dropdown-selector.active li {
+#dropdown-selector.active li {
     display: flex;
 }
 
-ul#dropdown-selector li.active {
+#dropdown-selector li.active {
     display: flex;
 }
 
-ul#dropdown-selector:not(.active) .fa-chevron-up {
+#dropdown-selector:not(.active) .fa-chevron-up {
     display: none;
 }
 
-ul#dropdown-selector.active .fa-chevron-down {
+#dropdown-selector.active .fa-chevron-down {
     display: none;
 }
 
-ul#dropdown-selector:not(.active) li:first-child .fa-chevron-down {
+#dropdown-selector:not(.active) li:first-child .fa-chevron-down {
     display: block;
 }
 
 /** COLORS */
-ul#dropdown-selector.active li.active {
+#dropdown-selector.active li.active {
     color: black;
 }
 
-ul#dropdown-selector.active li:hover {
+#dropdown-selector.active li:hover {
     background-color:  var(--indian-red);
 }
 
 /**BORDERS*/
-ul#dropdown-selector li:first-child, ul#dropdown-selector:not(.active) li {
+#dropdown-selector li:first-child, #dropdown-selector:not(.active) li {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-ul#dropdown-selector li:last-child, ul#dropdown-selector:not(.active) li {
+#dropdown-selector li:last-child, #dropdown-selector:not(.active) li {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
 /* ITEMS */
-ul#dropdown-selector li {
+#dropdown-selector li {
     margin: 0;
     padding: 0;
     height: 50px;
@@ -80,7 +85,7 @@ ul#dropdown-selector li {
 }
 
 
-ul#dropdown-selector li {
+#dropdown-selector li {
     flex: 1;
     width: 100%;
 
@@ -90,7 +95,7 @@ ul#dropdown-selector li {
     align-items: center;
 }
 
-ul#dropdown-selector li .row {
+#dropdown-selector li .row {
     flex: 1;
     width: 70%;
     display: flex;
@@ -99,7 +104,7 @@ ul#dropdown-selector li .row {
 }
 
 
-ul#dropdown-selector.active li:not(:last-child)::after {
+#dropdown-selector.active li:not(:last-child)::after {
     height: 1px;
     width: 80%;
 

@@ -37,4 +37,5 @@
 .photograph__media .fa-heart {
     color: var(--brown);
     cursor: pointer;
+    font-size: 1.1em;
 }
