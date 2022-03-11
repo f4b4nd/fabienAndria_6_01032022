@@ -23,14 +23,15 @@
 
 .lightbox__content {
     height: 90%;
-    width: 80vw;
+    width: 90vw;
     max-width: 1000px;
     margin: 0 auto;
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1em;
+    padding: 0 ;
 }
 
 .fa-chevron-left, .fa-chevron-right {
@@ -43,7 +44,7 @@
 .lightbox__media {
     height: 100%;
     width: 50vw;
-    min-width: 300px;
+    min-width: 250px;
     max-width: 800px;
     display: flex;
     justify-content: center;

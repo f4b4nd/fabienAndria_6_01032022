@@ -82,9 +82,6 @@
         row-gap: 2em;
     }
 
-    .photograph__media {
-        margin: 0 0.5em;
-    }
 
     .photograph__media__sort {
         margin-left: 2em;
@@ -92,6 +89,10 @@
 
     .photograph__media .cards {
         justify-content: center;
+    }
+
+    .photographer__section {
+        margin-top: 1.5em;
     }
 
 }

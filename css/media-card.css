@@ -1,8 +1,8 @@
 .photograph__media .card {
     flex-basis: 28%;    
     height: 20vw;
-    min-width: 350px;
-    min-height: 350px;
+    min-width: 330px;
+    min-height: 330px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
