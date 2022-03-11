@@ -74,8 +74,8 @@ export default class UserFactory extends AbstractFactory {
         return this.getHierarchizedComponent (userCardSchema)
     }
 
-    getUserMetaCardComponent () {
-        const userMetaCardSchema = {
+    getUserProfileTextComponent () {
+        const userProfileTextSchema = {
             article : {
                 tagHTML: 'article',
                 classnames: ['card'],
@@ -88,7 +88,7 @@ export default class UserFactory extends AbstractFactory {
                 text: this.data.name
             },
             location : {
-                tagHTML: 'div',
+                tagHTML: 'p',
                 parent: '.card',
                 classnames: ['card__location'],
                 text: this.location,
@@ -101,12 +101,12 @@ export default class UserFactory extends AbstractFactory {
             }
         }
 
-        return this.getHierarchizedComponent (userMetaCardSchema)
+        return this.getHierarchizedComponent (userProfileTextSchema)
     }
 
-    getUserPortraitComponent () {
+    getUserProfileImageComponent () {
 
-        const userPortraitSchema = {
+        const userProfileImageSchema = {
             img: {
                 tagHTML: 'img',
                 root: true,
@@ -117,7 +117,7 @@ export default class UserFactory extends AbstractFactory {
             }
         }
 
-        return this.getHierarchizedComponent(userPortraitSchema)
+        return this.getHierarchizedComponent(userProfileImageSchema)
 
     }
 

@@ -28,12 +28,12 @@ export default class LikesCounterPopupFactory extends AbstractFactory {
                 text: this.totalLikesCounter,
             },
             likesIcon: {
-                tagHTML: 'div',
+                tagHTML: 'i',
                 parent: '.popup__likes-wrapper',
                 classnames: ['popup__likes-icon', 'fa-solid', 'fa-heart'],
             },
             price: {
-                tagHTML: 'div',
+                tagHTML: 'p',
                 parent: '.popup',
                 classnames: ['popup__price'],
                 text: this.price

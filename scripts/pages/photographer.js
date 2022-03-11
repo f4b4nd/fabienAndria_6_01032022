@@ -27,17 +27,17 @@ export async function getPhotographerData () {
     return { metaData, mediaDatas }
 }
 
-function displayMetaData (metaData) {
+function displayProfileData (metaData) {
 
     const factory = new UserFactory(metaData)
-    const userCardMeta = factory.getUserMetaCardComponent()
-    const userPortrait = factory.getUserPortraitComponent()
+    const userProfileText = factory.getUserProfileTextComponent()
+    const userProfileImage = factory.getUserProfileImageComponent()
 
     const textSection = document.querySelector(".photograph__meta__text")
-    const portraitSection = document.querySelector('.photograph__meta__portrait')
+    const imageSection = document.querySelector('.photograph__meta__image')
 
-    textSection.appendChild(userCardMeta)
-    portraitSection.appendChild(userPortrait)
+    textSection.appendChild(userProfileText)
+    imageSection.appendChild(userProfileImage)
 
 }
 
@@ -81,7 +81,7 @@ async function init () {
         return
     }
 
-    displayMetaData(metaData)
+    displayProfileData(metaData)
     displayMediaDatas(mediaDatas)
     displayLikesCounterPopupData (metaData, mediaDatas)
     getDropdown()

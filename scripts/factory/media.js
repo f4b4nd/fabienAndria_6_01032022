@@ -23,9 +23,13 @@ export default class MediasFactory extends AbstractFactory {
                 classnames: ['card'],
             },
             mediaContainer: {
-                tagHTML: 'div',
+                tagHTML: 'a',
                 parent: '.card',
-                classnames: ['card__media']
+                classnames: ['card__media'],
+                attributes : {
+                    href: '#',
+                    'aria-label': this.data.title
+                }
             },
             bodyContainer: {
                 tagHTML: 'div',
@@ -53,13 +57,13 @@ export default class MediasFactory extends AbstractFactory {
                 classnames: ['card__body__likes-wrapper']
             },
             likesCounter: {
-                tagHTML: 'span',
+                tagHTML: 'p',
                 parent: '.card__body__likes-wrapper',
                 classnames: ['card__body__likes-counter'],
                 text: this.likesCounter,
             },
             likesIcon: {
-                tagHTML: 'span',
+                tagHTML: 'i',
                 parent: '.card__body__likes-wrapper',
                 classnames: ['card__body__likes-icon', 'fa-regular', 'fa-heart'],
                 clickEventListener: (elementDOM) => this.updateLikesDOM(elementDOM)
