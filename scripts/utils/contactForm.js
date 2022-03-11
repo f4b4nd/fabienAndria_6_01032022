@@ -1,6 +1,6 @@
-function getModal () {
+function getModal () {  // eslint-disable-line no-unused-vars
 
-    modalDOM = document.getElementById("contact_modal")
+    const modalDOM = document.getElementById("contact_modal")
     const modal = new ModalFactory(modalDOM)
     modal.displayModal()
     modal.setUsernameInfo()

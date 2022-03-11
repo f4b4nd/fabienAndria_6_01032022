@@ -1,15 +1,16 @@
-import { getPhotographerData, displayMediaDatas } from "../pages/photographer.js"
-import clearHTMLNode from "./clearHTMLNode.js"
+import { getPhotographerData, displayMediaDatas } from '../pages/photographer.js'
+import clearHTMLNode from './clearHTMLNode.js'
 
 
 export async function sortMediaDatas(value) {
 
-    const section = document.querySelector(".photograph__media .cards")
+    const section = document.querySelector('.photograph__media .cards')
     clearHTMLNode (section)
 
     const { mediaDatas } = await getPhotographerData()
 
     switch (value) {
+    
         case 'popularity':
             mediaDatas.sort((a, b) => b.likes - a.likes)
             break
