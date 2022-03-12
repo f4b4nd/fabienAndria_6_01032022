@@ -1,4 +1,4 @@
-function getModal () {  // eslint-disable-line no-unused-vars
+function getModal () { // eslint-disable-line no-unused-vars
 
     const modalDOM = document.getElementById("contact_modal")
     const modal = new ModalFactory(modalDOM)
@@ -9,7 +9,7 @@ function getModal () {  // eslint-disable-line no-unused-vars
     closeModalBtn.onclick = () => modal.closeModal()
 
     const submitModalBtn = modalDOM.querySelector('.submit-btn')
-    submitModalBtn.onclick = (e) =>  modal.submitForm(e)
+    submitModalBtn.onclick = (e) => modal.submitForm(e)
     
 }
 

@@ -1,6 +1,6 @@
 import getData from "../utils/fetch.js"
 
-import UserFactory  from "../factory/user.js"
+import UserFactory from "../factory/user.js"
 import MediasFactory from "../factory/media.js"
 import LikesCounterPopupFactory from "../factory/likesCounterPopup.js"
 import DropdownFactory from "../factory/dropdown.js"

@@ -2,6 +2,14 @@ import clearHTMLNode from "../utils/clearHTMLNode.js"
 
 export default class LightboxFactory {
 
+    /**
+     * Returns x raised to the n-th power.
+     *
+     * @param {htmlElement} media img or video HTMLelement
+     * @param {int} currentNodeIndex the current index of the html .card node
+     * @return {NodeList} HTMLNode list of all parents of class ".card"
+    */
+
     constructor(media, currentNodeIndex, nodes) {
         this.media = media
         this.currentNodeIndex = currentNodeIndex
@@ -60,7 +68,7 @@ export default class LightboxFactory {
 
     setVideoOnPause () {
         const video = this.lightboxMedia.querySelector('video')
-        if (!video)  return
+        if (!video) return
         video.paused ? video.play() : video.pause()
     }
 

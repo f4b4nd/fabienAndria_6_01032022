@@ -18,7 +18,6 @@
   "homepage": "https://github.com/f4b4nd/fabienAndria_6_01032022#readme",
   "devDependencies": {
     "eslint": "^8.10.0",
-    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4"
   }
 }

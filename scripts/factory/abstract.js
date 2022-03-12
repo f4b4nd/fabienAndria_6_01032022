@@ -22,7 +22,7 @@ export default class AbstractFactory {
         }
 
         if (elementSchema.clickEventListener) {
-            elementDOM.addEventListener('click',  (elementDOM) => elementSchema.clickEventListener(elementDOM))
+            elementDOM.addEventListener('click', (elementDOM) => elementSchema.clickEventListener(elementDOM))
         }
 
         return elementDOM
