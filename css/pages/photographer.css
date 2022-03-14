@@ -76,15 +76,23 @@
         row-gap: 2em;
     }
 
-
-    .photograph__media__sort {
-        margin-left: 2em;
-    }
-
-
-
     .photographer__section {
         margin-top: 1.5em;
+    }
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .photograph__media {
+        margin: 0 1em;
+    }
+    
+    .photograph__media__sort {
+        max-width: 100%;
+        margin: 2em 0;
+        justify-content: flex-start;
     }
 
 }

@@ -5,8 +5,7 @@
     top: 5%;
     left: 5%;
     right: 5%;
-    bottom: 5%;
-    overflow: hidden;
+    bottom: 1%;
 }
 
 .modal {
@@ -15,18 +14,18 @@
     width: 80vw;
     min-width: 300px;
     max-width: 600px;
+    max-height: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     row-gap: 1em;
-    padding: 1em 2em 2em 2em;
+    padding: 1em 2em;
     margin: auto;
 }
 
 .modal header {
     width: 100%;
-    border: 1px solid black;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -38,6 +37,7 @@
     cursor: pointer;
 }
 
+
 .modal header h2 {
     margin: 0;
     padding: 0;
@@ -45,6 +45,8 @@
     font-weight: normal;
     flex-direction: row;
 }
+
+
 
 form {
     display: flex;
@@ -58,12 +60,12 @@ form label {
     font-size: 1.5em;
 }
 
-form div {
+form .form-inputs {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    margin-bottom: 0;
 }
 
 .modal h3 {
@@ -71,6 +73,7 @@ form div {
     text-align: left;
     width: 100%;
     font-size: 1.8em;
+    margin: 0;
 }
 
 form input {
@@ -82,9 +85,12 @@ form input {
 }
 
 form input#message {
-    height: 100px;
+    height: 80px;
 }
 
+.modal button {
+    margin: 0;
+}
 
 @media screen and (max-width: 768px) {
 
@@ -96,18 +102,24 @@ form input#message {
     }
 
     .modal {
+        max-height: 550px;
+        align-items: center;
         justify-content: flex-start;
         height: 95%;
         width: 100%;
         margin: 0;
-        padding: 0;
+        padding: 1em 0;
     }
-
 
     .modal header {
+        width: 90%;
         flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
     }
+
     .modal header h2 {
+        font-size: 1.6em;
         font-weight: bold;
     }
 
@@ -116,13 +128,18 @@ form input#message {
         height: 1.2em;
     }
 
-    .modal form div {
+    .modal form .form-inputs {
         margin: 0;
     }
 
     .modal h3 {
         margin: 0;
         padding: 0;
+        text-align: center;
+    }
+
+    .modal form {
+        width: 90%;
     }
 
     .modal form input {
