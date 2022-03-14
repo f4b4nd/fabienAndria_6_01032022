@@ -12,7 +12,6 @@ export default class DropdownFactory {
         this.setOptionsEventListeners()
     }
 
-    getOptionID () {}
     setCurrentOption (newIndex) {
 
         if (this.currentOptionIndex === newIndex) return
