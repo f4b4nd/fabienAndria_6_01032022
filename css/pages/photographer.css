@@ -35,17 +35,11 @@
 }
 
 .photograph__media .cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    row-gap: 2em;
-    column-gap: 1em;
-}
-
-/**prevents article:last-child to stick to right because of space-evenly (works with space-between) */
-.photograph__media .cards::after {
-    content: "";
-    flex: 0 0 28%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    justify-content: center;
+    grid-row-gap: 2em;
+    grid-column-gap: 1em;
 }
 
 .contact_button {
@@ -87,9 +81,7 @@
         margin-left: 2em;
     }
 
-    .photograph__media .cards {
-        justify-content: center;
-    }
+
 
     .photographer__section {
         margin-top: 1.5em;

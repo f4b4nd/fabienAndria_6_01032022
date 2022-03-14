@@ -1,5 +1,5 @@
-@import url("index.css");
-@import url("photographer.css");
+@import url("pages/index.css");
+@import url("pages/photographer.css");
 @import url("user-card.css");
 @import url("profile-card.css");
 @import url("media-card.css");

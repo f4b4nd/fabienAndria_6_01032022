@@ -3,7 +3,6 @@ import clearHTMLNode from "../utils/clearHTMLNode.js"
 export default class LightboxFactory {
 
     /**
-     * Returns x raised to the n-th power.
      *
      * @param {htmlElement} media img or video HTMLelement
      * @param {int} currentNodeIndex the current index of the html .card node
