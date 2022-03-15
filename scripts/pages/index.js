@@ -1,6 +1,6 @@
-import getData from "../utils/fetch.js" 
+import getData from "../utils/fetch.js"
 import UserFactory from "../factory/user.js"
- 
+
 
 async function getPhotographers() {
     const data = await getData()

@@ -21,7 +21,7 @@ export default class UserFactory extends AbstractFactory {
             },
             a : {
                 tagHTML: 'a',
-                parent : '.card',   
+                parent : '.card',
                 classnames: ['card__header'],
                 attributes: {
                     href: this.urlPhotographer
@@ -61,7 +61,7 @@ export default class UserFactory extends AbstractFactory {
                 tagHTML: 'p',
                 parent: '.card__body',
                 classnames: ['card__body__tagline'],
-                text: this.data.tagline, 
+                text: this.data.tagline,
             },
             price : {
                 tagHTML: 'p',
@@ -82,7 +82,7 @@ export default class UserFactory extends AbstractFactory {
                 root: true,
             },
             h1: {
-                tagHTML: 'h1',                
+                tagHTML: 'h1',
                 parent: '.card',
                 classnames: ['card__title'],
                 text: this.data.name,

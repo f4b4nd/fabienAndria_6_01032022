@@ -4,22 +4,23 @@ export default class LightboxFactory {
 
     /**
      *
+     * @param {htmlElement} lightboxDOM lightbox destination
      * @param {htmlElement} media img or video HTMLelement
      * @param {int} currentNodeIndex the current index of the html .card node
      * @return {NodeList} HTMLNode list of all parents of class ".card"
     */
 
-    constructor(media, currentNodeIndex, nodes) {
+    constructor(lightboxDOM, media, currentNodeIndex, nodes) {
+        this.lightbox = lightboxDOM
         this.media = media
         this.currentNodeIndex = currentNodeIndex
         this.nodes = nodes
         this.title = this.getTitle()
-        this.lightbox = document.querySelector('#lightbox')
         this.lightboxMedia = this.lightbox.querySelector('.lightbox__media')
         this.lightboxTitle = this.lightbox.querySelector('.lightbox__title')
     }
 
-    displayLightbox () {    
+    displayLightbox () {
         this.lightbox.style.display = 'block'
     }
 
@@ -47,7 +48,7 @@ export default class LightboxFactory {
         this.lightboxMedia.appendChild(newMedia)
     }
 
-    setLightboxTitle () {        
+    setLightboxTitle () {
         this.lightboxTitle.textContent = this.title
     }
 

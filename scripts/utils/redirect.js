@@ -12,7 +12,7 @@ export function currentURLIsValid () {
     const currentURLIsValid = matches.length > 0
 
     return currentURLIsValid
-    
+
 }
 
 

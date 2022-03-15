@@ -106,7 +106,7 @@ export default class MediasFactory extends AbstractFactory {
         this.updateTotalLikesCounterDOM()
     }
 
-    updateLikesCounterDOM (likesCounterDOM) {        
+    updateLikesCounterDOM (likesCounterDOM) {
         const increment = (this.likesCounter === this.data.likes) ? 1 : 0
         this.likesCounter = this.data.likes + increment
         likesCounterDOM.textContent = this.likesCounter
@@ -120,7 +120,7 @@ export default class MediasFactory extends AbstractFactory {
         }
         else {
             likesIconDOM.classList.remove('fa-regular')
-            likesIconDOM.classList.add('fa-solid')        
+            likesIconDOM.classList.add('fa-solid')
         }
     }
 
@@ -135,4 +135,3 @@ export default class MediasFactory extends AbstractFactory {
         sectionDOM.textContent = totalLikesCounter
     }
 }
-

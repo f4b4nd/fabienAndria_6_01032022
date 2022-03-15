@@ -48,7 +48,7 @@ export function displayMediaDatas (mediaDatas) {
     mediaDatas.forEach((mediaData) => {
         const factory = new MediasFactory(mediaData)
         const mediaCard = factory.getMediaCardComponent()
-        section.appendChild(mediaCard)        
+        section.appendChild(mediaCard)
     })
 
 }
@@ -70,10 +70,10 @@ function displayLikesCounterPopupData (metaData, mediaDatas) {
 export function getDropdown () {
     const dropdown = document.querySelector('#dropdown-selector')
     new DropdownFactory(dropdown, 0)
-} 
+}
 
 async function init () {
-         
+
     const { metaData, mediaDatas } = await getPhotographerData()
 
     if (mediaDatas.length === 0 || metaData.length === 0 || !currentURLIsValid()) {

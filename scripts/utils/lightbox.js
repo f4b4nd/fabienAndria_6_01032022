@@ -11,7 +11,8 @@ export function getLightbox (mediaElement) {
     const currentNodeIndex = [...nodes].findIndex(node => node === currentNode)
 
     /*** USING lIGHTBOX */
-    const lightbox = new LightboxFactory(media, currentNodeIndex, nodes)
+    const lightboxDOM = document.querySelector('#lightbox')
+    const lightbox = new LightboxFactory(lightboxDOM, media, currentNodeIndex, nodes)
     lightbox.displayLightbox()
     lightbox.setLightbox()
 

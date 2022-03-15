@@ -10,12 +10,12 @@ function getModal () { // eslint-disable-line no-unused-vars
 
     const submitModalBtn = modalDOM.querySelector('.submit-btn')
     submitModalBtn.onclick = (e) => modal.submitForm(e)
-    
+
 }
 
 
 class ModalFactory {
-    
+
     constructor (modal) {
         this.modal = modal
         this.form = this.modal.querySelector('form')
