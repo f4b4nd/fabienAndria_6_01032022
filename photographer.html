@@ -37,6 +37,7 @@
             aria-haspopup="listbox" 
             aria-expanded="false" 
             aria-labelledby="sort-by"
+            tabindex="0"
           >
             <ul 
               id="dropdown-selector__options" 
@@ -45,19 +46,20 @@
               aria-activedescendant="" 
               aria-selected="true" 
             > 
-              <li id="popularity" data-value="popularity" class="active" role="option"> 
+              <li id="popularity" data-value="popularity" class="active" role="option" tabindex="0"
+              > 
                   <span class="row">
                     <span class="text"> Popularité </span>
                     <span class="icon"> <i class="fas fa-chevron-down"></i> <i class="fas fa-chevron-up"></i> </i> </span> 
                   </span>
               </li>
-              <li id="date" data-value="date" role="option" > 
+              <li id="date" data-value="date" role="option" tabindex="0" > 
                 <span class="row">
                   <span class="text"> Date </span>
                   <span class="icon"> <i class="fas fa-chevron-down"></i>  </span>
                 </span>
               </li>
-              <li id="title" data-value="title" role="option"> 
+              <li id="title" data-value="title" role="option" tabindex="0"  > 
                 <span class="row">
                   <span class="text"> Titre </span>      
                   <span class="icon"> <i class="fas fa-chevron-down"></i> </span> 

@@ -51,6 +51,7 @@ export default class DropdownFactory {
     setOptionsEventListeners () {
         [...this.options].forEach((option, optionIndex) => {
             option.addEventListener('click', () => this.setCurrentOption(optionIndex))
+            option.addEventListener('keydown', (e) => { if (e.key === 'Enter') this.setCurrentOption(optionIndex) })
         })
     }
 
