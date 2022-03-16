@@ -7,10 +7,14 @@ function getModal () { // eslint-disable-line no-unused-vars
 
     const closeModalBtn = modalDOM.querySelector('.close-btn')
     closeModalBtn.onclick = () => modal.closeModal()
+    closeModalBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter') modal.closeModal()})
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.closeModal()
+    })
 
     const submitModalBtn = modalDOM.querySelector('.submit-btn')
     submitModalBtn.onclick = (e) => modal.submitForm(e)
-
 }
 
 
