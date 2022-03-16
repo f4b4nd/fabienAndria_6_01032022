@@ -25,7 +25,7 @@ export default class UserFactory extends AbstractFactory {
                 classnames: ['card__header'],
                 attributes: {
                     href: this.urlPhotographer,
-                    tabindex: '0'
+                    tabindex: '1'
                 },
             },
             imageContainer : {
