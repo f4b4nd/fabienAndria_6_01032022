@@ -22,7 +22,15 @@ export default class AbstractFactory {
         }
 
         if (elementSchema.clickEventListener) {
-            elementDOM.addEventListener('click', (elementDOM) => elementSchema.clickEventListener(elementDOM))
+            elementDOM.addEventListener('click', (elementDOM) => {console.log('click', elementDOM, elementSchema) ; elementSchema.clickEventListener(elementDOM)})
+        }
+
+        if (elementSchema.keydownEventListener) {
+            elementDOM.addEventListener('keydown', (DOM) => {
+                if (DOM.key === 'Enter') {
+                    elementSchema.keydownEventListener(DOM)
+                }}
+            )
         }
 
         return elementDOM

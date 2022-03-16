@@ -13,7 +13,7 @@
   </head>
   <body>
     <header>
-      <a href="index.html">
+      <a href="index.html"  tabindex="0" >
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" />
       </a>
     </header>
@@ -22,7 +22,7 @@
         <div class="photograph__meta__text">
           <!-- META DATA : TEXT -->
         </div>
-        <button class="contact_button contact-me-btn" aria-label="Contact me" onclick="getModal()">Contactez-moi</button>
+        <button class="contact_button contact-me-btn" aria-label="Contact me" tabindex="1" onclick="getModal()">Contactez-moi</button>
         <div class="photograph__meta__image">
           <!-- META DATA : Image -->
         </div>
@@ -37,7 +37,7 @@
             aria-haspopup="listbox" 
             aria-expanded="false" 
             aria-labelledby="sort-by"
-            tabindex="0"
+            tabindex="8"
           >
             <ul 
               id="dropdown-selector__options" 
@@ -46,20 +46,20 @@
               aria-activedescendant="" 
               aria-selected="true" 
             > 
-              <li id="popularity" data-value="popularity" class="active" role="option" tabindex="0"
+              <li id="popularity" data-value="popularity" class="active" role="option" tabindex="9"
               > 
                   <span class="row">
                     <span class="text"> Popularité </span>
                     <span class="icon"> <i class="fas fa-chevron-down"></i> <i class="fas fa-chevron-up"></i> </i> </span> 
                   </span>
               </li>
-              <li id="date" data-value="date" role="option" tabindex="0" > 
+              <li id="date" data-value="date" role="option" tabindex="10" > 
                 <span class="row">
                   <span class="text"> Date </span>
                   <span class="icon"> <i class="fas fa-chevron-down"></i>  </span>
                 </span>
               </li>
-              <li id="title" data-value="title" role="option" tabindex="0"  > 
+              <li id="title" data-value="title" role="option" tabindex="11"  > 
                 <span class="row">
                   <span class="text"> Titre </span>      
                   <span class="icon"> <i class="fas fa-chevron-down"></i> </span> 
@@ -89,21 +89,21 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img class="close-btn" src="./assets/icons/close.svg"  />
+          <img class="close-btn" src="./assets/icons/close.svg"  tabindex="7"/>
         </header>
         <h3 class="modal__photograph-name"> </h3>
 				<form>
 					<div class="form-inputs">
 						<label form="firstname">Prénom</label>
-						<input id="firstname" aria-label="firstname" >
+						<input id="firstname" aria-label="firstname"  tabindex="2"  >
             <label for="lastname" >Nom</label>
-						<input id="lastname" aria-label="lastname" />
+						<input id="lastname" aria-label="lastname"  tabindex="3"  />
             <label form="email" >Email</label>
-						<input id="email" aria-label="email" />
+						<input id="email" aria-label="email"  tabindex="4" />
             <label for="message" >Votre message</label>
-						<input id="message" aria-label="Your message" />
+						<input id="message" aria-label="Your message"  tabindex="5"  />
 					</div>
-          <button class="contact_button submit-btn" type="submit" aria-label="Send" >Envoyer</button>
+          <button class="contact_button submit-btn" type="submit" aria-label="Send" tabindex="6">Envoyer</button>
 				</form>
 			</div>
 		</div>

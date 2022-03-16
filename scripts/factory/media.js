@@ -41,9 +41,11 @@ export default class MediasFactory extends AbstractFactory {
                 parent: '.card__media',
                 classnames: ['card__media__content'],
                 attributes: {
-                    src: this.mediaSource
+                    src: this.mediaSource,
+                    tabindex: '12'
                 },
-                clickEventListener: (elementDOM) => getLightbox(elementDOM)
+                clickEventListener: (elementDOM) => getLightbox(elementDOM),
+                keydownEventListener: (elementDOM) => getLightbox(elementDOM)
             },
             title: {
                 tagHTML: 'p',
@@ -68,8 +70,11 @@ export default class MediasFactory extends AbstractFactory {
                 classnames: ['card__body__likes-icon', 'fa-regular', 'fa-heart'],
                 attributes: {
                     'aria-label': 'likes',
+                    tabindex: '12'
                 },
-                clickEventListener: (elementDOM) => this.updateLikesDOM(elementDOM)
+                clickEventListener: (elementDOM) => this.updateLikesDOM(elementDOM),
+                keydownEventListener: (elementDOM) => this.updateLikesDOM(elementDOM)
+
             }
         }
 
