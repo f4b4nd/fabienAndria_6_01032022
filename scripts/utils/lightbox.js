@@ -19,15 +19,15 @@ export function getLightbox (mediaElement) {
     /**PREVIOUS BUTTON */
     const previousLightboxBtn = document.querySelector('.lightbox__previous')
     previousLightboxBtn.addEventListener('click', () => lightbox.setPreviousLightbox())
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') lightbox.setPreviousLightbox()
+    previousLightboxBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') lightbox.setPreviousLightbox()
     })
 
     /**NEXT BUTTON */
     const nextLightboxBtn = document.querySelector('.lightbox__next')
     nextLightboxBtn.addEventListener('click', () => lightbox.setNextLightbox())
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') lightbox.setNextLightbox()
+    nextLightboxBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') lightbox.setNextLightbox()
     })
 
     /** CLOSE BUTTON */

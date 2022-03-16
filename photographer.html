@@ -13,7 +13,7 @@
   </head>
   <body>
     <header>
-      <a href="index.html"  tabindex="0" >
+      <a href="index.html"  tabindex="0" aria-label="Page d'accueil" >
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" />
       </a>
     </header>
@@ -76,15 +76,17 @@
     <div class="photograph__popup">
       
     </div>
+
     <div id="lightbox">
       <div class="lightbox__content" aria-label="image closeup view"> 
         <button class="close-btn" role="button" aria-label="Close Dialog"> X </button>
-        <a class="lightbox__previous" role="button" aria-label="previous image"> <i class="fa-solid fa-chevron-left"></i> </a>
+        <a class="lightbox__previous" role="button" aria-label="previous image" tabindex="0"> <i class="fa-solid fa-chevron-left" tabindex="0"></i> </a>
         <div class="lightbox__media"><!-- MEDIA GOES HERE --></div>
-        <a class="lightbox__next" role="button" aria-label="Next image"> <i class="fa-solid fa-chevron-right"></i> </a>
+        <a class="lightbox__next" role="button" aria-label="Next image" tabindex="0"> <i class="fa-solid fa-chevron-right" tabindex="0"></i> </a>
       </div>
       <p class="lightbox__title"> <!-- TITLE GOES HERE --> </p>
     </div>
+
     <div id="contact_modal" aria-label="Modal de contact" >
 			<div class="modal">
 				<header>
